@@ -36,7 +36,7 @@ function CompanyAccountHandle({ onCompanyLogin, onCompanyRegister }) {
   return (
     <div className='page-container-holder'>
       <div className='page-container'>
-            <>
+        <div className="substitute-container">
               {showInputForm ? (
                 <>
                   <div className='alert-container'>
@@ -58,7 +58,7 @@ function CompanyAccountHandle({ onCompanyLogin, onCompanyRegister }) {
                   </div>
                 </>
               )}
-            </>
+          </div>
       </div>
     </div>
   )

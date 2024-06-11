@@ -25,9 +25,9 @@ try {
   // Creates an Express application.
   const app = express()
 
-  // Allow requests from http://localhost:3000 with credentials
+  // Allow requests from frontend with credentials
   const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: process.env.FRONTEND_URL,
     credentials: true
   }
 

@@ -9,8 +9,10 @@ function NavigationBar({ isLoggedIn, isCompanyLoggedIn}) {
 
   return (
     <Navbar bg="white" variant="light">
-      <img src={logo} alt="Hitta Vikarie Logo" />
-      <Container className="navbar-container d-flex justify-content-end">
+      <Link to="/">
+        <img src={logo} alt="Hitta Vikarie Logo" />
+      </Link>
+      <Container className="navbar-container d-flex justify-content-end ">
         <Nav className="navbar-content">
           <Link to="/">Hem</Link>
           <Link to="/companyAccount-handle">Hitta vikarie</Link>
