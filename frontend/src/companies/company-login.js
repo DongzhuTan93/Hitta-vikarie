@@ -61,20 +61,30 @@ function CompanyLogin({ onCompanyLogin }) {
   } // I got inspration from ChatGPT
 
   return (
-    <div className="login-distence">
+    <div>
       {message && <Alert variant={requestStatus ? "success" : "danger"}>{message}</Alert>}
-      <h1>Företag login här:</h1>
+      <h1>Företaget logga in här:</h1>
       <form onSubmit={handleCompanyLoginClick}>
         <div>
-          <input type='text' placeholder='Användarnamn' value={ companyname } onChange={(event) => { setSubstitutename(event.target.value) }} />
+          <input 
+            className="input-field"
+            placeholder="Användarnamn" 
+            value={companyname} 
+            onChange={(event) => {setSubstitutename(event.target.value)}}
+          />
         </div>
         <div>
-          <input type='password' placeholder='Lösenord minst 10 tecken' value={password} onChange={(event) => { setPassword(event.target.value) }} />
+          <input 
+            className="input-field"
+            placeholder="Lösenord minst 10 tecken" 
+            type="password"
+            value={password} 
+            onChange={(event) => {setPassword(event.target.value)}}
+          />
         </div>
         <button type="submit" style={{ marginTop: '20px' }} className="btn btn-outline-danger">Login</button>
       </form>
     </div>
-    
   )
 }
 

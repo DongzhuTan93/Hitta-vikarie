@@ -47,7 +47,6 @@ function App() {
         isLoggedIn={ isLoggedIn } 
         isCompanyLoggedIn={ isCompanyLoggedIn } 
       />
-      <p>{console.log(isLoggedIn)}</p>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/om-oss" element={<AboutUs />} />

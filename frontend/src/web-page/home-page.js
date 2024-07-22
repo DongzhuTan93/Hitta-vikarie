@@ -13,8 +13,8 @@ function Home() {
             <source src={videoSource} type="video/mp4" />
           </video>
           <div className="overlay">
-            <div className="wrapper smaller">
-              <p>En perfekt mötesplats!</p>
+            <div className="wrapper">
+              <h2>En perfekt mötesplats!</h2>
               <h1>Tillsammans slutför vi denna kompletta pusselbit.</h1>
               <div className="button-container">
                 <Link to='/companyAccount-handle' className="brick-red btn-ngs">Hitta vikarie</Link>

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SubstituteRegister from './substitute-register'
 import SubstituteLogin from './substitute-login'
 import { useNavigate } from "react-router-dom"
+import registerVideo from '../public/vikarie-register-video.mp4'
 
 
 function SubstituteAccountHandle({ onSubstituteLogin, onSubstituteRegister }) {
@@ -20,6 +21,10 @@ function SubstituteAccountHandle({ onSubstituteLogin, onSubstituteRegister }) {
   }
 
   return (
+    <div className="video-container">
+      <video autoPlay loop muted>
+        <source src={registerVideo} type="video/mp4" />
+      </video>
     <div className='page-container-holder'>
       <div className="page-container">
         <div className="substitute-container">
@@ -29,8 +34,8 @@ function SubstituteAccountHandle({ onSubstituteLogin, onSubstituteRegister }) {
                 <div className="login-distence">
                   <SubstituteRegister onSubstituteRegister={handleSubstituteRegister}/>
                 </div>
-                  <p>Har du redan ett konto? Logga in här:</p>
-                  <button onClick={() => setShowRegisterForm(false)}  type="button" className="btn btn-outline-danger">Login</button>
+                <p>Har du redan ett konto? Klicka login </p>
+                <button onClick={() => setShowRegisterForm(false)} type="button" >Login</button>
               </div>
             </>
           ) : (
@@ -40,13 +45,14 @@ function SubstituteAccountHandle({ onSubstituteLogin, onSubstituteRegister }) {
                 <SubstituteLogin onSubstituteLogin={handleSubstituteLogin}/>
               </div>
                 <p>Kom tillbaka till registreringssidan:</p>
-                <button onClick={() => setShowRegisterForm(true)} type="button" className="btn btn-outline-danger">Registrera</button>
+                <button onClick={() => setShowRegisterForm(true)} type="button" >Registrera</button>
               </div>
             </>
           )}
         </div>
       </div>
     </div>
+  </div>
   )
 }
 

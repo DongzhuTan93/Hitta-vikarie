@@ -34,34 +34,33 @@ function ShowCompanies({ onCompanyLogout, onLogout }) {
 
 
   return (
-    <div className='page-container-holder'>
-      <div className="page-container">
+      <div className="substitute-container">
         {companies.length === 0 ? (
           <>
             {message && <Alert variant={message.includes('success') ? 'success' : 'danger'}>{message}</Alert>}
           </>
         ) : (
-          <div className='box-container'>
+          <>
             <p>Alla företag:</p> 
             {companies.map((company, index) => (
                 <div key={index} className="substitute-box">
-                  <p>
+                  <h2>
                     <span className="highlight">Företag name:</span> {company.companyname}
-                  </p>
-                  <p>
+                  </h2>
+                  <h2>
                     <span className="highlight">Företag behov:</span> {company.availablePositions}
-                  </p>
-                  <p>
+                  </h2>
+                  <h2>
                     <span className="highlight">Kontakt företag:</span> {company.companyEmail}
-                  </p>
+                  </h2>
                 </div>
               ))}
-            </div>
+          </>
         )}
-        <p>Logout här:</p>
+        <h2>Logout här:</h2>
           <button onClick={handleLogout}  type="button" className="btn btn-outline-danger">Logout</button>
       </div>
-    </div>
+
   )
 }
 

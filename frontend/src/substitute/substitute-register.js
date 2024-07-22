@@ -61,18 +61,35 @@ function SubstituteRegister({ onSubstituteRegister }) {
       {message && <Alert variant={requestStatus ? "success" : "danger"}>{message}</Alert>}
       <h1>Registrera dig för att ser lediga tjänster:</h1>
       <form onSubmit={ handleSubstituteRegisterClick}>
-        <div>
-          <input placeholder="Användarnamn" value={substitutename} onChange={(event) => {setSubstitutename(event.target.value)}}/>
+      <div>
+          <input 
+            className="input-field"
+            placeholder="Användarnamn" 
+            value={substitutename} 
+            onChange={(event) => {setSubstitutename(event.target.value)}}
+          />
         </div>
         <div>
-          <input placeholder="Användarens e-post" value={substituteEmail} onChange={(event) => {setSubstituteEmail(event.target.value)}}/>
+          <input 
+            className="input-field"
+            placeholder="Användarens e-post" 
+            value={substituteEmail} 
+            onChange={(event) => {setSubstituteEmail(event.target.value)}}
+          />
         </div>
         <div>
-          <input placeholder="Lösenord minst 10 tecken" value={password} onChange={(event) => {setPassword(event.target.value)}}/>
+          <input 
+            className="input-field"
+            placeholder="Lösenord minst 10 tecken" 
+            type="password"
+            value={password} 
+            onChange={(event) => {setPassword(event.target.value)}}
+          />
         </div>
-          <button type="submit" style={{ marginTop: '20px' }}  className="btn btn-outline-danger">Registrera</button>
+        <button type="submit" style={{ marginTop: '20px' }} className="btn btn-outline-danger">Registrera</button>
       </form>
-    </div>
+      </div>
+
   )
 }
 

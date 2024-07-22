@@ -6,6 +6,7 @@ function SubstituteLogin({ onSubstituteLogin }) {
   const [substitutename, setSubstitutename] = useState("")
   const [password, setPassword] = useState("")
   const [message, setMessage] = useState("")
+  const [requestStatus, setRequestStatus] = useState(null)
 
   const handleSubstituteLoginClick = async (event) => {
 
@@ -45,6 +46,8 @@ function SubstituteLogin({ onSubstituteLogin }) {
       } else {
         setMessage("Inloggningen misslyckades. Kontrollera dina inloggningsuppgifter .")
       }
+
+      setRequestStatus(response.ok)
     } catch (error) {
       console.log(error)
       setMessage("Ett fel uppstod")
@@ -52,19 +55,30 @@ function SubstituteLogin({ onSubstituteLogin }) {
   } // I got inspration from ChatGPT
 
   return (
-    <div className="login-distence">
-      {message && <Alert variant={message.includes("success") ? "success" : "danger"}>{message}</Alert>}
-      <h1>Vikarie login här:</h1>
-      <form onSubmit={handleSubstituteLoginClick}>
-        <div>
-          <input placeholder='Användarnamn' value={substitutename} onChange={(event) => { setSubstitutename(event.target.value) }} />
-        </div>
-        <div>
-          <input type='password' placeholder='Lösenord minst 10 tecken' value={password} onChange={(event) => { setPassword(event.target.value) }} />
-        </div>
-        <button type="submit" style={{ marginTop: '20px' }} className="btn btn-outline-danger">Login</button>
-      </form>
-    </div>
+    <div>
+    {message && <Alert variant={requestStatus ? "success" : "danger"}>{message}</Alert>}
+    <h1>Vikarie logga in här:</h1>
+    <form onSubmit={handleSubstituteLoginClick}>
+      <div>
+        <input 
+          className="input-field"
+          placeholder="Användarnamn" 
+          value={substitutename} 
+          onChange={(event) => {setSubstitutename(event.target.value)}}
+        />
+      </div>
+      <div>
+        <input 
+          className="input-field"
+          placeholder="Lösenord minst 10 tecken" 
+          type="password"
+          value={password} 
+          onChange={(event) => {setPassword(event.target.value)}}
+        />
+      </div>
+      <button type="submit" style={{ marginTop: '20px' }} className="btn btn-outline-danger">Login</button>
+    </form>
+  </div>
   )
 }
 

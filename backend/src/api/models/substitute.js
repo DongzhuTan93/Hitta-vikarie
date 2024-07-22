@@ -1,4 +1,3 @@
-
 /**
  * Mongoose model substitute.
  *

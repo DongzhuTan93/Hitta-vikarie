@@ -1,6 +1,7 @@
 body {
-  background-color:#ccc;
-  font-family: Arial, sans-serif; 
+  font-family:  Georgia, 'Times New Roman', Times, serif; 
+  margin: 0;
+  padding: 0;
 }
 
 .App {
@@ -11,7 +12,7 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 150px;
+  height: 100px;
 }
 
 .navbar-content {
@@ -20,9 +21,9 @@ body {
   justify-content: flex-end;
   font-size:x-large;
   font-weight: bold;
-  gap: 50px;
-  margin-right: 50px;
-  margin-top: 80px;
+  gap: 60px;
+  margin-right: 40px;
+  margin-top: 40px;
 }
 
 .navbar-content a {
@@ -54,24 +55,27 @@ body {
 
 .video-container {
   position: relative;
-  height: 80vh;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
-.overlay {
+.video-container video {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: cover;
 }
 
 .wrapper {
   font-size: 6em;
   color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -130,14 +134,36 @@ body {
 
 .button-container a:hover,
 .button-container a:focus {
-  background-color: orange;
+  background-color: orange; 
   color: white;
 }
 
+.image-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .page-container-holder {
+  position: absolute;
+  height: 80vh; /* Full height of the viewport */
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  margin-top: 20%;
+  left: 50%;
 }
 
 .page-container {
@@ -145,10 +171,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 70vw;
-  background-color: #fff;
-  margin: 20px;
-  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 60px;
+  padding: 10px;
 }
 
 .box-container {
@@ -162,21 +190,35 @@ body {
 }
 
 .image {
-  max-width: 60%;
-  height: auto;
+  margin-top: 60px;
+  max-width: 80%;
+  
 }
 
 .alert-container {
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-top: 10px;
+  color:coral;
+  font-size:xx-large;
+}
+
+h2 {
+  font-size:x-large;
+  padding: 10px;
 }
 
 .substitute-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  width: 100%; /* Adjust the width as needed */
+  flex-direction: column;
 }
 
 .button-container {
@@ -187,12 +229,16 @@ body {
 }
 
 .substitute-box {
-  width: 17cm;
-  border: 2px solid #ccc;
-  padding: 10px;
-  margin: 0.5cm;
-  transition: border-color 0.3s ease;
-  overflow: auto;
+  background-color: #f0f8ff;
+  border: 1px solid #b0d4ff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.substitute-box p {
+  color: black;
 }
 
 .substitute-box:hover {
@@ -200,8 +246,18 @@ body {
   box-shadow: 0 0 5px lightcyan;
 }
 
-.login-distence {
-  margin-bottom: 20px;
+.btn-outline-danger {
+  background-color: coral;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+  background-color:tomato;
 }
 
 .highlight {
@@ -223,3 +279,183 @@ body {
 
 }
 
+.input-field {
+  width: 80%; /* Makes the input field take up the full width of its container */
+  max-width: 350px; /* Limits the maximum width */
+  padding: 10px; /* Adds padding for better spacing */
+  margin: 10px 0; /* Adds margin to space out the input fields */
+  border: 1px solid #ccc; /* Adds a border */
+  border-radius: 10px; /* Adds border-radius for rounded corners */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1); /* Optional: adds a slight dark overlay */
+}
+
+.wrapper p {
+  font-size: x-large;
+}
+
+.wrapper h1 {
+  font-size: 3rem;
+}
+
+.contact-page-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color:aliceblue;
+  padding: 20px;
+  margin-top: 30px;
+
+}
+
+.contact-info {
+  background-color:aliceblue;
+  color:rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  flex: 1;
+  border-radius: 10px;
+  margin-right: 20px;
+  border: solid 1px;
+}
+
+.contact-info p {
+  color:black;
+}
+
+.contact-form-container {
+  flex: 1;
+  padding: 20px 0;
+  justify-content: center;
+
+}
+
+.contact-form-container h2 {
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.contact-form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background-color:coral;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.social-icon {
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .contact-page-container {
+    flex-direction: column;
+  }
+  
+  .contact-info {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.om-oss-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1500px;
+  margin: 0 auto;
+  background-color:aliceblue;
+  margin-top: 60px;
+}
+
+.image-section {
+  width: 100%;
+}
+
+.about-image {
+  width: 110%;
+  height: auto;
+  object-fit: cover;
+}
+
+.text-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.text-content {
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.text-content h2 {
+  font-size: 2em;
+}
+
+.text-content p {
+  line-height: 1.5;
+  color: black;
+  font-size:larger;
+  text-align:left;
+  background-color: beige;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .om-oss-container {
+    flex-direction: row;
+  }
+
+  .image-section {
+    width: 60%;
+  }
+
+  .text-section {
+    width: 40%;
+    padding: 40px;
+  }
+
+  .text-content {
+    max-width: 90%;
+  }
+}

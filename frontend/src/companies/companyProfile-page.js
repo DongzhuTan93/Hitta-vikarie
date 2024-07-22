@@ -15,12 +15,13 @@ function CompanyProfilePage({ onCompanyLogout }) {
   return (
     <div className='page-container-holder'>
       <div className="page-container">
-          <h2>Företag Profilsida</h2>
-          <p>Här ser du alla vikarie:</p>
+          <h1>Företag Profilsida</h1>
+          <p>_________________________________</p>
+          <h2>Här ser du alla vikarie:</h2>
           <Link to="/showAllSubstitute-page">
           <button type="button" class="btn btn-outline-danger">Alla vikarie</button>
           </Link>
-          <p>Logout här:</p>
+          <h2>Logout här:</h2>
           <button onClick={handleLogout}  type="button" className="btn btn-outline-danger">Logout</button>
       </div>
     </div>
