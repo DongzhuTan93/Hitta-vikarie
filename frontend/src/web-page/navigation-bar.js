@@ -16,7 +16,7 @@ function NavigationBar({ isLoggedIn, isCompanyLoggedIn}) {
         <Nav className="navbar-content">
           <Link to="/">Hem</Link>
           <Link to="/companyAccount-handle">Hitta vikarie</Link>
-          <Link to="/substituteAccount-handle">Blir vikarie</Link>
+          <Link to="/substituteAccount-handle">Bli vikarie</Link>
           <Link to="/om-oss">Om oss</Link>
           <Link to="/kontakta-oss">Kontakta oss</Link>
           {!isLoggedIn && !isCompanyLoggedIn && <Link to="/allAccount-login">Login</Link>}
