@@ -45,7 +45,7 @@ function CompanyAccountHandle({ onCompanyLogin, onCompanyRegister }) {
                   <div className="login-distance">
                     <CompanyRegister onCompanyRegister={handleCompanyRegister} onEnterKey={handleEnterKeyRegister} />
                   </div>
-                  <p>Har du redan ett konto? Klicka login </p>
+                  <p className="login-text">Har du redan ett konto? Klicka login</p>
                   <button onClick={() => setShowInputForm(false)} type="button" >Login</button>
                 </div>
               </>
