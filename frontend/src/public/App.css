@@ -27,14 +27,9 @@ body {
 }
 
 .navbar-content {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
-  font-size: medium; /* Smaller font size */
-  font-weight: 500; /* Less bold */
-  gap: 40px; /* Reduced gap */
-  margin-right: 40px;
-  margin-top: 0; /* Removed top margin */
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
 }
 
 .navbar-content a {
@@ -661,7 +656,7 @@ h2 {
   display: flex;
   flex-direction: column;
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 50px auto;
   background-color: #f8f9fa;
   border-radius: 12px;
   overflow: hidden;
@@ -726,12 +721,12 @@ h2 {
 }
 
 .text-content p {
-  line-height: 1.7;
+  line-height: 1.6;
   color: #444;
-  font-size: 1.1rem;
+  font-size: 14px !important;
   text-align: left;
   background-color: #fff;
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -750,6 +745,11 @@ h2 {
   .text-section {
     width: 60%; /* Increased from 40% */
     padding: 40px;
+  }
+
+  .text-content p {
+    font-size: 14px !important;
+    padding: 15px;
   }
 }
 
@@ -798,8 +798,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 40px;  /* Increased from 30px */
+  height: 40px; /* Increased from 30px */
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -807,11 +807,12 @@ h2 {
 
 .footer-social-link:hover {
   background-color: tomato;
+  transform: translateY(-2px);
 }
 
 .footer-social-icon {
-  width: 15px;
-  height: 15px;
+  width: 20px;  /* Increased from 15px */
+  height: 20px; /* Increased from 15px */
 }
 
 .footer-newsletter {
@@ -972,5 +973,863 @@ h2 {
   
   .login-divider {
     padding: 15px 0;
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  /* General responsive adjustments */
+  body {
+    font-size: 14px;
+  }
+  
+  .App {
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Navigation bar mobile adjustments */
+  .navbar {
+    padding: 10px 0;
+  }
+  
+  .navbar a img {
+    height: 45px;
+    margin-left: 10px;
+  }
+  
+  .navbar-content {
+    gap: 15px;
+    margin-right: 10px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .navbar-content a {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+  
+  /* Contact page mobile adjustments */
+  .contact-page-container {
+    padding: 15px;
+  }
+  
+  .contact-card {
+    flex-direction: column;
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-info, 
+  .contact-form-container {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .contact-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .contact-detail {
+    margin-bottom: 12px;
+  }
+  
+  .contact-detail p {
+    font-size: 0.9rem;
+  }
+  
+  .footer-section {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-title {
+    font-size: 1rem;
+  }
+  
+  .footer-social {
+    justify-content: center;
+  }
+  
+  .footer-newsletter-form {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .footer-newsletter-input {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .footer-newsletter-button {
+    width: 100%;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  
+  .footer-copyright {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  /* Form adjustments */
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .form-control {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  
+  /* Login page mobile adjustments */
+  .login-page-container {
+    padding: 10px;
+  }
+  
+  .login-card {
+    flex-direction: column;
+    margin: 10px;
+  }
+  
+  .login-section {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .login-input {
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+  
+  .login-button {
+    width: 100%;
+  }
+  
+  /* About us page mobile adjustments */
+  .om-oss-container {
+    flex-direction: column;
+    padding: 0 15px;
+  }
+  
+  .image-section, .text-section {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .about-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .text-content p {
+    font-size: 14px !important;
+    padding: 12px;
+  }
+  
+  /* Company and substitute account pages */
+  .account-container {
+    padding: 10px;
+  }
+  
+  .account-card {
+    flex-direction: column;
+    margin: 10px;
+  }
+  
+  .account-form-container, .account-info {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .account-video {
+    height: 200px;
+  }
+  
+  /* Profile pages */
+  .profile-container {
+    padding: 10px;
+  }
+  
+  .profile-card {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .profile-section {
+    padding: 15px;
+  }
+}
+
+/* Additional adjustments for extra small devices */
+@media (max-width: 480px) {
+  .navbar a img {
+    height: 40px;
+  }
+  
+  .navbar-content {
+    gap: 10px;
+  }
+  
+  .navbar-content a {
+    padding: 5px 7px;
+    font-size: 13px;
+  }
+  
+  .contact-title, .login-section h2, .profile-section h2 {
+    font-size: 18px;
+  }
+  
+  .footer-social-link {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .footer-social-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Enhanced mobile responsiveness - fixes for overflow and width issues */
+@media (max-width: 768px) {
+  /* Fix for all containers to prevent horizontal overflow */
+  body, html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+  
+  .container-fluid,
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Mobile navigation fixes */
+  .mobile-responsive-navbar {
+    padding: 5px 10px !important;
+    width: 100%;
+  }
+  
+  .mobile-responsive-navbar .navbar-toggler {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
+  
+  .navbar-collapse {
+    width: 100%;
+  }
+  
+  .navbar-content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: flex-start !important;
+  }
+  
+  .navbar-content a {
+    width: 100%;
+    text-align: left;
+    padding: 8px 15px;
+    margin: 2px 0;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  /* Login page specific fixes */
+  .login-page-container {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .login-section {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  .login-input, 
+  .login-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Contact page fixes */
+  .contact-page-container {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  .contact-card {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .contact-info, 
+  .contact-form-container {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  .footer-newsletter-form {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .footer-newsletter-input,
+  .footer-newsletter-button {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  
+  .footer-newsletter-input {
+    margin-bottom: 8px;
+  }
+  
+  /* Form elements fixes */
+  .form-control, 
+  .submit-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* Extra small devices - additional fixes */
+@media (max-width: 480px) {
+  .login-page-container,
+  .contact-page-container,
+  .account-container,
+  .profile-container,
+  .om-oss-container {
+    padding: 10px;
+  }
+  
+  .login-card,
+  .contact-card,
+  .account-card,
+  .profile-card {
+    padding: 8px;
+  }
+  
+  .login-section,
+  .contact-info,
+  .contact-form-container,
+  .account-form-container,
+  .account-info,
+  .profile-section {
+    padding: 10px;
+  }
+  
+  .login-input,
+  .form-control {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .login-button,
+  .submit-button {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Fix for horizontal scrolling and hamburger menu positioning */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fix for hamburger menu positioning - same level as logo */
+.mobile-responsive-navbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 15px !important;
+  width: 100% !important;
+}
+
+.mobile-responsive-navbar .container-fluid {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Logo positioning */
+.mobile-responsive-navbar a img {
+  height: 40px !important;
+  margin: 0 !important;
+}
+
+/* Hamburger menu positioning - on same level as logo */
+.mobile-responsive-navbar .navbar-toggler {
+  margin: 0 !important;
+  padding: 4px 8px !important;
+  font-size: 1rem !important;
+  border: 1px solid #ddd !important;
+  position: static !important;
+}
+
+/* Ensure the collapsed menu appears below the header */
+.mobile-responsive-navbar .navbar-collapse {
+  position: absolute !important;
+  top: 60px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background-color: white !important;
+  z-index: 1000 !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+}
+
+.App {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Container fixes for mobile */
+@media (max-width: 768px) {
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .container-fluid,
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+    margin: 0 !important;
+  }
+  
+  /* Fix for all page containers */
+  .login-page-container,
+  .contact-page-container,
+  .account-container,
+  .profile-container,
+  .om-oss-container,
+  .video-container,
+  .page-container-holder,
+  .page-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+  }
+  
+  /* Fix for all cards */
+  .login-card,
+  .contact-card,
+  .account-card,
+  .profile-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix for all sections */
+  .login-section,
+  .contact-info,
+  .contact-form-container,
+  .account-form-container,
+  .account-info,
+  .profile-section,
+  .image-section,
+  .text-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Fix for all form elements */
+  input, 
+  textarea, 
+  select, 
+  button,
+  .form-control,
+  .login-input,
+  .footer-newsletter-input,
+  .footer-newsletter-button,
+  .submit-button,
+  .login-button {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 14px !important;
+  }
+  
+  /* Fix for newsletter form */
+  .footer-newsletter-form {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Fix for text content */
+  p, h1, h2, h3, h4, h5, h6 {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-wrap: break-word !important;
+  }
+  
+  /* Fix for images */
+  img, video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Fix for navbar */
+  .mobile-responsive-navbar {
+    width: 100% !important;
+    padding: 5px 10px !important;
+  }
+  
+  .navbar-collapse {
+    width: 100% !important;
+  }
+  
+  .navbar-content {
+    width: 100% !important;
+  }
+  
+  .navbar-content a {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 8px 10px !important;
+    margin: 2px 0 !important;
+    font-size: 14px !important;
+  }
+}
+
+/* Extra small devices - additional fixes */
+@media (max-width: 480px) {
+  .contact-page-container,
+  .login-page-container,
+  .account-container,
+  .profile-container,
+  .om-oss-container {
+    padding: 10px;
+  }
+  
+  .contact-card,
+  .login-card,
+  .account-card,
+  .profile-card {
+    padding: 8px;
+  }
+  
+  .contact-info,
+  .contact-form-container,
+  .login-section,
+  .account-form-container,
+  .account-info,
+  .profile-section {
+    padding: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 8px !important;
+  }
+  
+  .form-control,
+  .login-input {
+    padding: 8px !important;
+    font-size: 13px !important;
+  }
+  
+  .submit-button,
+  .login-button {
+    padding: 8px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* Fix for logo left and hamburger right positioning */
+.mobile-responsive-navbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 15px !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+.mobile-responsive-navbar .container-fluid {
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Logo positioning */
+.mobile-responsive-navbar a img {
+  height: 40px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hamburger menu positioning */
+.mobile-responsive-navbar .navbar-toggler {
+  position: relative !important;
+  right: 0 !important;
+  top: 0 !important;
+  margin: 0 !important;
+  padding: 5px 8px !important;
+  font-size: 1rem !important;
+  z-index: 1100 !important;
+  border: 1px solid #ddd !important;
+}
+
+/* Ensure the collapsed menu appears below the header */
+.mobile-responsive-navbar .navbar-collapse {
+  position: absolute !important;
+  top: 60px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background-color: white !important;
+  z-index: 1000 !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+}
+
+/* Fix for navbar links */
+.mobile-responsive-navbar .navbar-content {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Clean navbar styling for mobile */
+.mobile-responsive-navbar {
+  padding: 10px 15px !important;
+  background-color: transparent !important;
+  position: relative !important;
+}
+
+.mobile-responsive-navbar .nav-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+/* Logo styling - make it larger for desktop */
+.mobile-responsive-navbar .navbar-brand {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mobile-responsive-navbar .logo-image {
+  height: 80px !important; /* Increased from 65px to 80px */
+  width: auto !important;
+  margin: 0 !important;
+  max-width: 250px !important; /* Increased from 200px to 250px */
+  object-fit: contain !important;
+}
+
+/* Hamburger button styling - exactly like Bossa Care */
+.mobile-responsive-navbar .custom-toggler {
+  background: transparent !important;
+  border: none !important;
+  padding: 0.5rem !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+.mobile-responsive-navbar .navbar-toggler-icon {
+  width: 1.5em !important;
+  height: 1.5em !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.mobile-responsive-navbar .navbar-toggler:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Dropdown menu styling */
+.mobile-responsive-navbar .navbar-collapse {
+  position: absolute !important;
+  top: 75px !important;
+  left: 0 !important;
+  right: 0 !important;
+  background-color: white !important;
+  z-index: 1000 !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+  padding: 0 !important;
+}
+
+/* Home page content styling - responsive approach */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-content {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .home-content h1,
+  .home-content h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .home-content p {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .feature-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .feature-section h3 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-section p {
+    text-align: center;
+    flex: 1;
+    min-width: 300px;
+    padding: 0 15px;
+  }
+}
+
+/* Mobile styles - keep your current mobile design */
+@media (max-width: 767px) {
+  .home-content h1,
+  .home-content h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .home-content p {
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+  }
+  
+  .feature-section h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-section p {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+/* Desktop navigation styling - ensure single line */
+@media (min-width: 992px) {
+  .mobile-responsive-navbar .container-fluid {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+  }
+  
+  .navbar-content {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* Prevent wrapping to multiple lines */
+    gap: 20px !important; /* Reduced gap between items */
+  }
+  
+  .navbar-content a {
+    font-size: 16px !important; /* Slightly smaller font for better fit */
+    padding: 8px 10px !important; /* Reduced padding */
+    white-space: nowrap !important; /* Prevent text wrapping */
+  }
+  
+  /* Center the entire navbar */
+  .mobile-responsive-navbar {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  
+  /* Ensure the navbar collapse takes full width */
+  .mobile-responsive-navbar .navbar-collapse {
+    width: 100% !important;
+    position: static !important; /* Override absolute positioning */
+    box-shadow: none !important;
+    top: auto !important;
   }
 }

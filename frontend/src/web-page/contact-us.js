@@ -1,5 +1,5 @@
 import React from 'react'
-import githubIcon from '../public/github.png'
+import githubIcon from '../public/github.jpg'
 import linkedinIcon from '../public/linkedin.png'
 
 function KontaktaOss() {
