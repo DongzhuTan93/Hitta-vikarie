@@ -12,8 +12,7 @@ import CompanyProfilePage from './companies/companyProfile-page'
 import AllAccountLogin from './web-page/navigation-bar-login'
 import ShowAllSubstitute from './substitute/showAllSubstitute-page'
 import ShowCompanies from './companies/showAllCompanies-page'
-import SubstituteNewOpportunities from './substitute/substitute-new-opportunities' 
-
+import SubstituteNewOpportunities from './substitute/substitute-new-opportunities'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -22,7 +21,6 @@ function App() {
   const handleSubstituteLogin = () => {
     console.log('handleSubstituteLogin')
     setIsLoggedIn(true)
-
   }
 
   const handleSubstituteLogout = () => {
@@ -40,29 +38,36 @@ function App() {
     setCompanyLoggedIn(false)
   }
 
-
   return (
     <Router>
       <NavigationBar 
-        isLoggedIn={ isLoggedIn } 
-        isCompanyLoggedIn={ isCompanyLoggedIn } 
+        isLoggedIn={isLoggedIn} 
+        isCompanyLoggedIn={isCompanyLoggedIn} 
       />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/om-mig" element={<AboutUs />} />
         <Route path="/om-oss" element={<AboutUs />} />
         <Route path="/kontakta-oss" element={<ContactUs />} />
-        <Route path="/showAllSubstitute-page" element={<ShowAllSubstitute  onLogout={handleSubstituteLogout} onCompanyLogout={handleCompanyLogout}/>} />
+        <Route path="/showAllSubstitute-page" element={<ShowAllSubstitute onLogout={handleSubstituteLogout} onCompanyLogout={handleCompanyLogout}/>} />
         <Route path="/showCompanies" element={<ShowCompanies onCompanyLogout={handleCompanyLogout} onLogout={handleSubstituteLogout}/>} />
-        <Route path="/substituteAccount-handle" element={<SubstituteAccountHandle onSubstituteLogin={ handleSubstituteLogin } onSubstituteRegister={ handleSubstituteLogin }/>} />
-        <Route path="/companyAccount-handle" element={<CompanyAccountHandle  onCompanyLogin={ handleCompanyLogin } onCompanyRegister={ handleCompanyLogin } />} />
-        <Route path="/allAccount-login" element={<AllAccountLogin  onCompanyLogin={ handleCompanyLogin }  onSubstituteLogin={ handleSubstituteLogin } />}/>
+        
+        {/* Use the new URLs but with the original components */}
+        <Route path="/substitute-register" element={<SubstituteAccountHandle onSubstituteLogin={handleSubstituteLogin} onSubstituteRegister={handleSubstituteLogin}/>} />
+        <Route path="/company-register" element={<CompanyAccountHandle onCompanyLogin={handleCompanyLogin} onCompanyRegister={handleCompanyLogin} />} />
+        
+        {/* For backward compatibility, also keep the old URLs */}
+        <Route path="/substituteAccount-handle" element={<SubstituteAccountHandle onSubstituteLogin={handleSubstituteLogin} onSubstituteRegister={handleSubstituteLogin}/>} />
+        <Route path="/companyAccount-handle" element={<CompanyAccountHandle onCompanyLogin={handleCompanyLogin} onCompanyRegister={handleCompanyLogin} />} />
+        
+        {/* Keep the rest of your routes */}
+        <Route path="/allAccount-login" element={<AllAccountLogin onCompanyLogin={handleCompanyLogin} onSubstituteLogin={handleSubstituteLogin} />}/>
         <Route path="/substituteProfile-page" element={<SubstituteProfilePage onLogout={handleSubstituteLogout} />}/>
         <Route path="/companyProfile-page" element={<CompanyProfilePage onCompanyLogout={handleCompanyLogout}/>}/>
-        <Route path="/SubstituteNewOpportunities" element={<SubstituteNewOpportunities onSubstituteLogin={ handleSubstituteLogin }/>}/>
+        <Route path="/SubstituteNewOpportunities" element={<SubstituteNewOpportunities onSubstituteLogin={handleSubstituteLogin}/>}/>
       </Routes>
     </Router>
   )
-
 }
 
 export default App

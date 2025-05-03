@@ -28,9 +28,9 @@ function NavigationBar({ isLoggedIn, isCompanyLoggedIn}) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="navbar-content ms-auto">
             <Link to="/" className={location.pathname === '/' ? 'active-link' : ''} onClick={closeMenu}>Hem</Link>
-            <Link to="/companyAccount-handle" className={location.pathname === '/companyAccount-handle' ? 'active-link' : ''} onClick={closeMenu}>Hitta vikarie</Link>
-            <Link to="/substituteAccount-handle" className={location.pathname === '/substituteAccount-handle' ? 'active-link' : ''} onClick={closeMenu}>Bli vikarie</Link>
-            <Link to="/om-oss" className={location.pathname === '/om-oss' ? 'active-link' : ''} onClick={closeMenu}>Om mig</Link>
+            <Link to="/company-register" className={location.pathname === '/company-register' ? 'active-link' : ''} onClick={closeMenu}>Hitta vikarie</Link>
+            <Link to="/substitute-register" className={location.pathname === '/substitute-register' ? 'active-link' : ''} onClick={closeMenu}>Bli vikarie</Link>
+            <Link to="/om-mig" className={location.pathname === '/om-mig' ? 'active-link' : ''} onClick={closeMenu}>Om mig</Link>
             <Link to="/kontakta-oss" className={location.pathname === '/kontakta-oss' ? 'active-link' : ''} onClick={closeMenu}>Kontakta mig</Link>
             {!isLoggedIn && !isCompanyLoggedIn && <Link to="/allAccount-login" className={location.pathname === '/allAccount-login' ? 'active-link' : ''} onClick={closeMenu}>Login</Link>}
             {isLoggedIn && <Link to="/substituteProfile-page" className={location.pathname === '/substituteProfile-page' ? 'active-link' : ''} onClick={closeMenu}>Vikarie profil</Link>}

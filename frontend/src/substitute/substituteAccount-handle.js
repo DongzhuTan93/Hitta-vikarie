@@ -15,9 +15,14 @@ function SubstituteAccountHandle({ onSubstituteLogin, onSubstituteRegister }) {
     navigate("/substituteProfile-page") // Navigate to the profile page
   }
 
-  const handleSubstituteRegister = () => {
-    onSubstituteRegister(true)
-    navigate("/allAccount-login")
+  const handleSubstituteRegister = (message) => {
+    console.log('Registration successful, navigating now...', message);
+    localStorage.setItem('registrationSuccessMessage', message || 'Användaren skapades! Logga in med dina uppgifter.');
+    
+    // Add a small delay to ensure state is properly updated
+    setTimeout(() => {
+      navigate('/allAccount-login');
+    }, 100);
   }
 
   return (

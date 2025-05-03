@@ -13,9 +13,9 @@ function CompanyAccountHandle({ onCompanyLogin, onCompanyRegister }) {
     navigate('/companyProfile-page');
   };
 
-  const handleCompanyRegister = () => {
+  const handleCompanyRegister = (message) => {
     console.log('Registration successful, navigating now...');
-    onCompanyRegister(true);
+    localStorage.setItem('registrationSuccessMessage', message || 'Företaget skapades! Logga in med dina uppgifter.');
     navigate('/allAccount-login');
   };
 

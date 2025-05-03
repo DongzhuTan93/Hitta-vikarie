@@ -39,7 +39,7 @@ function AllAccountLogin({ onCompanyLogin, onSubstituteLogin }) {
             <button type="submit" className="login-button">Login</button>
           </form>
           <div className="login-footer">
-            <p>Har du inget konto? <a href="/substituteAccount-handle">Registrera dig här</a></p>
+            <p>Har du inget konto? <a href="/substitute-register">Registrera dig här</a></p>
           </div>
         </div>
         
@@ -63,7 +63,7 @@ function AllAccountLogin({ onCompanyLogin, onSubstituteLogin }) {
             <button type="submit" className="login-button">Login</button>
           </form>
           <div className="login-footer">
-            <p>Har du inget konto? <a href="/companyAccount-handle">Registrera dig här</a></p>
+            <p>Har du inget konto? <a href="/company-register">Registrera dig här</a></p>
           </div>
         </div>
       </div>

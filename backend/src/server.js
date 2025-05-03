@@ -131,3 +131,5 @@ try {
   console.error(err)
   process.exitCode = 1
 }
+
+console.log("CORS origin:", process.env.FRONTEND_URL);

@@ -30,14 +30,18 @@ function CompanyRegister({ onCompanyRegister }) {
         headers: {
           "Content-Type": "application/json",  
         },
+        credentials: "include"
       })
       const data = await response.json()
 
       if (response.ok) {
         setMessage(data.message)
-        if (data.message === "Företaget har skapats, vänligen logga in med dina inloggningsuppgifter.") {
-          onCompanyRegister() // Update the isLoggedIn state to true
-        }
+        localStorage.setItem('registrationSuccessMessage', data.message || 'Företaget har skapats! Logga in med dina inloggningsuppgifter.')
+        
+        // Navigate to the all account login page with success message
+        setTimeout(() => {
+          window.location.href = '/allAccount-login'
+        }, 200)
       } else {
         setMessage("Företag registreringen misslyckades. Kontrollera dina uppgifter .")
       }

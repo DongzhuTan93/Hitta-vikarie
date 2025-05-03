@@ -39,11 +39,14 @@ function SubstituteRegister({ onSubstituteRegister }) {
 
       if (response.ok) {
         setMessage(data.message)
-
-        if (data.message === "Användaren skapades!") {
-          onSubstituteRegister() // Update the isLoggedIn state to true
-        }
-
+        
+        // Regardless of the exact message, if response was OK, call the register handler
+        localStorage.setItem('registrationSuccessMessage', data.message || 'Användaren skapades! Logga in med dina uppgifter.')
+        
+        // Navigate to the all account login page with success message
+        setTimeout(() => {
+          window.location.href = '/allAccount-login'
+        }, 200)
       } else {
         setMessage("Vikarie registreringen misslyckades. Kontrollera dina uppgifter .")
       }
