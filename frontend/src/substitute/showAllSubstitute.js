@@ -7,12 +7,6 @@ function ShowSubstitute({ onLogout, onCompanyLogout }) {
   const [message, setMessage] = useState('')
   const navigate = useNavigate()
 
-  const handleLogout = () => {
-    onLogout()
-    onCompanyLogout()
-    navigate("/") // Set login state to false
-  }
-
   useEffect(() => {
     const getSubstitutes = async () => {
       try {
@@ -32,7 +26,7 @@ function ShowSubstitute({ onLogout, onCompanyLogout }) {
   }, []) // Empty dependency array to run this effect only once
 
   return (
-    <div className="substitute-container">
+    <div className="substitute-container" style={{ backgroundColor: '#FDF6E3', padding: '20px', borderRadius: '10px' }}>
       {substitutes.length === 0 ? (
         <>
           {message && <Alert variant={message.includes('success') ? 'success' : 'danger'}>{message}</Alert>}
@@ -58,8 +52,9 @@ function ShowSubstitute({ onLogout, onCompanyLogout }) {
           ))}
         </>
       )}
-      <h2>Logout här:</h2>
-      <button onClick={handleLogout} type="button" className="btn btn-outline-danger">Logout</button>
+      <div className="job-opportunities-message">
+        <p>Inga fler kandidater</p>
+      </div>
     </div>
   )
 }

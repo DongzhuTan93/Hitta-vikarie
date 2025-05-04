@@ -7,13 +7,6 @@ function ShowCompanies({ onCompanyLogout, onLogout }) {
   const [companies, setCompanies] = useState([])
   const [message, setMessage] = useState('')
   const navigate = useNavigate()
-
-  const handleLogout = () => {
-    onCompanyLogout()
-    onLogout()
-    navigate("/") // Set login state to false
-  }
-  
   
   useEffect(() => {
     const getCompanies = async () => {
@@ -31,10 +24,8 @@ function ShowCompanies({ onCompanyLogout, onLogout }) {
     getCompanies()
   }, [])
 
-
-
   return (
-      <div className="substitute-container">
+      <div className="substitute-container" style={{ backgroundColor: '#FDF6E3', padding: '20px', borderRadius: '10px' }}>
         {companies.length === 0 ? (
           <>
             {message && <Alert variant={message.includes('success') ? 'success' : 'danger'}>{message}</Alert>}
@@ -57,8 +48,9 @@ function ShowCompanies({ onCompanyLogout, onLogout }) {
               ))}
           </>
         )}
-        <h2>Logout här:</h2>
-          <button onClick={handleLogout}  type="button" className="btn btn-outline-danger">Logout</button>
+        <div className="job-opportunities-message">
+          <p>Inga fler jobbmöjligheter tillgängliga</p>
+        </div>
       </div>
 
   )

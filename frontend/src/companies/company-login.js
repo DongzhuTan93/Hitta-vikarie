@@ -1,13 +1,22 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Alert from 'react-bootstrap/Alert'
 import { createErrorMessage } from "../utils/utils"
+import { useNavigate } from "react-router-dom"
 
 
-function CompanyLogin({ onCompanyLogin }) {
-  const [companyname, setSubstitutename] = useState("")
+function CompanyLogin({ onCompanyLogin, onEnterKey, prefillUsername = "" }) {
+  const [companyname, setSubstitutename] = useState(prefillUsername)
   const [password, setPassword] = useState("")
   const [message, setMessage] = useState("")
   const [requestStatus, setRequestStatus] = useState(null)
+  const navigate = useNavigate()
+
+  // Update username state if prefillUsername changes
+  useEffect(() => {
+    if (prefillUsername) {
+      setSubstitutename(prefillUsername)
+    }
+  }, [prefillUsername])
 
   const handleCompanyLoginClick = async (event) => {
 
@@ -46,7 +55,11 @@ function CompanyLogin({ onCompanyLogin }) {
         setMessage(data.message)
 
         if (data.message === "Företagslogin lyckades") {
+          // Spara företagsnamnet i localStorage
+          localStorage.setItem('companyname', companyname);
+          
           onCompanyLogin() // Update the isLoggedIn state to true
+          navigate("/companyProfile") // Navigate to the profile page
         }
 
       } else {
@@ -63,7 +76,7 @@ function CompanyLogin({ onCompanyLogin }) {
   return (
     <div>
       {message && <Alert variant={requestStatus ? "success" : "danger"}>{message}</Alert>}
-      <h1>Företaget logga in här:</h1>
+      <h1>Logga in</h1>
       <form onSubmit={handleCompanyLoginClick}>
         <div>
           <input 
@@ -71,6 +84,7 @@ function CompanyLogin({ onCompanyLogin }) {
             placeholder="Användarnamn" 
             value={companyname} 
             onChange={(event) => {setSubstitutename(event.target.value)}}
+            onKeyDown={onEnterKey}
           />
         </div>
         <div>
@@ -80,9 +94,27 @@ function CompanyLogin({ onCompanyLogin }) {
             type="password"
             value={password} 
             onChange={(event) => {setPassword(event.target.value)}}
+            onKeyDown={onEnterKey}
           />
         </div>
-        <button type="submit" style={{ marginTop: '20px' }} className="btn btn-outline-danger">Login</button>
+        <div style={{ marginTop: '30px', textAlign: 'center' }}>
+          <button 
+            type="submit" 
+            style={{ 
+              backgroundColor: 'tomato', 
+              color: 'white', 
+              border: 'none', 
+              padding: '12px 20px', 
+              borderRadius: '6px', 
+              fontSize: '16px', 
+              cursor: 'pointer',
+              width: '100%',
+              maxWidth: '220px'
+            }}
+          >
+            Logga in
+          </button>
+        </div>
       </form>
     </div>
   )

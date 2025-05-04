@@ -17,8 +17,8 @@ function Home() {
               <h2>En perfekt mötesplats!</h2>
               <h1>Tillsammans slutför vi denna kompletta pusselbit.</h1>
               <div className="button-container">
-                <Link to='/companyAccount-handle' className="brick-red btn-ngs">Hitta vikarie</Link>
-                <Link to='/substituteAccount-handle' className="brick-red btn-ngs">Bli vikarie</Link>
+                <Link to='/companyAccount'>Hitta vikarie</Link>
+                <Link to='/substituteAccount'>Bli vikarie</Link>
               </div>
             </div>
           </div>

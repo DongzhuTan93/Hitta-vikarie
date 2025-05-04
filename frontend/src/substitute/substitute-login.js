@@ -1,17 +1,36 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Alert from 'react-bootstrap/Alert'
+import { createErrorMessage } from "../utils/utils"
+import { useNavigate } from "react-router-dom"
 
-
-function SubstituteLogin({ onSubstituteLogin }) {
-  const [substitutename, setSubstitutename] = useState("")
+function SubstituteLogin({ onSubstituteLogin, onEnterKey, prefillUsername = "", registrationSuccess = false }) {
+  const [substitutename, setSubstitutename] = useState(prefillUsername)
   const [password, setPassword] = useState("")
   const [message, setMessage] = useState("")
   const [requestStatus, setRequestStatus] = useState(null)
+  const navigate = useNavigate()
+
+  // Update username state if prefillUsername changes
+  useEffect(() => {
+    if (prefillUsername) {
+      setSubstitutename(prefillUsername)
+    }
+    if (registrationSuccess) {
+      setMessage("Registrering lyckades! Du kan nu logga in.")
+      setRequestStatus(true)
+    }
+  }, [prefillUsername, registrationSuccess])
 
   const handleSubstituteLoginClick = async (event) => {
 
     event.preventDefault() // Prevent the form from refreshing the page
 
+    const errorMessage = createErrorMessage(substitutename, password)
+
+    if (errorMessage) {
+      setMessage(errorMessage)
+      return
+    }
 
     if (!substitutename || !password) {
       setMessage("Användarnamn och lösenord krävs!")
@@ -39,12 +58,16 @@ function SubstituteLogin({ onSubstituteLogin }) {
       if (response.ok) {
         setMessage(data.message)
 
-        if (data.message === "Användarinloggning lyckades") {
+        if (data.message === "Inloggning lyckades" || data.message === "Användarinloggning lyckades") {
+          // Spara användarnamnet i localStorage
+          localStorage.setItem('substitutename', substitutename);
+          
           onSubstituteLogin() // Update the isLoggedIn state to true
+          navigate("/substituteProfile") // Navigate to the profile page
         }
 
       } else {
-        setMessage("Inloggningen misslyckades. Kontrollera dina inloggningsuppgifter .")
+        setMessage("Inloggningen misslyckades. Kontrollera dina uppgifter.")
       }
 
       setRequestStatus(response.ok)
@@ -56,29 +79,48 @@ function SubstituteLogin({ onSubstituteLogin }) {
 
   return (
     <div>
-    {message && <Alert variant={requestStatus ? "success" : "danger"}>{message}</Alert>}
-    <h1>Vikarie logga in här:</h1>
-    <form onSubmit={handleSubstituteLoginClick}>
-      <div>
-        <input 
-          className="input-field"
-          placeholder="Användarnamn" 
-          value={substitutename} 
-          onChange={(event) => {setSubstitutename(event.target.value)}}
-        />
-      </div>
-      <div>
-        <input 
-          className="input-field"
-          placeholder="Lösenord minst 10 tecken" 
-          type="password"
-          value={password} 
-          onChange={(event) => {setPassword(event.target.value)}}
-        />
-      </div>
-      <button type="submit" style={{ marginTop: '20px' }} className="btn btn-outline-danger">Login</button>
-    </form>
-  </div>
+      {message && <Alert variant={requestStatus ? "success" : "danger"}>{message}</Alert>}
+      <h1>Logga in</h1>
+      <form onSubmit={handleSubstituteLoginClick}>
+        <div>
+          <input 
+            className="input-field"
+            placeholder="Användarnamn" 
+            value={substitutename} 
+            onChange={(event) => {setSubstitutename(event.target.value)}}
+            onKeyDown={onEnterKey}
+          />
+        </div>
+        <div>
+          <input 
+            className="input-field"
+            placeholder="Lösenord minst 10 tecken" 
+            type="password"
+            value={password} 
+            onChange={(event) => {setPassword(event.target.value)}}
+            onKeyDown={onEnterKey}
+          />
+        </div>
+        <div style={{ marginTop: '30px', textAlign: 'center' }}>
+          <button 
+            type="submit" 
+            style={{ 
+              backgroundColor: 'tomato', 
+              color: 'white', 
+              border: 'none', 
+              padding: '12px 20px', 
+              borderRadius: '6px', 
+              fontSize: '16px', 
+              cursor: 'pointer',
+              width: '100%',
+              maxWidth: '220px'
+            }}
+          >
+            Logga in
+          </button>
+        </div>
+      </form>
+    </div>
   )
 }
 

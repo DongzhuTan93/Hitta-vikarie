@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Alert from 'react-bootstrap/Alert'
 
 
-function SubstituteRegister({ onSubstituteRegister }) {
+function SubstituteRegister({ onSubstituteRegister, onEnterKey }) {
   const [substitutename, setSubstitutename] = useState("")
   const [substituteEmail, setSubstituteEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -38,12 +38,10 @@ function SubstituteRegister({ onSubstituteRegister }) {
       const data = await response.json()
 
       if (response.ok) {
-        setMessage(data.message)
-
-        if (data.message === "Användaren skapades!") {
-          onSubstituteRegister() // Update the isLoggedIn state to true
-        }
-
+        // Always use this specific message for successful registration
+        const successMessage = "Vikarie skapades! Logga in med dina uppgifter."
+        setMessage(successMessage)
+        onSubstituteRegister(successMessage, true, substitutename)
       } else {
         setMessage("Vikarie registreringen misslyckades. Kontrollera dina uppgifter .")
       }
@@ -67,6 +65,7 @@ function SubstituteRegister({ onSubstituteRegister }) {
             placeholder="Användarnamn" 
             value={substitutename} 
             onChange={(event) => {setSubstitutename(event.target.value)}}
+            onKeyDown={onEnterKey}
           />
         </div>
         <div>
@@ -75,6 +74,7 @@ function SubstituteRegister({ onSubstituteRegister }) {
             placeholder="Användarens e-post" 
             value={substituteEmail} 
             onChange={(event) => {setSubstituteEmail(event.target.value)}}
+            onKeyDown={onEnterKey}
           />
         </div>
         <div>
@@ -84,6 +84,7 @@ function SubstituteRegister({ onSubstituteRegister }) {
             type="password"
             value={password} 
             onChange={(event) => {setPassword(event.target.value)}}
+            onKeyDown={onEnterKey}
           />
         </div>
         <button type="submit" style={{ marginTop: '20px' }} className="btn btn-outline-danger">Registrera</button>

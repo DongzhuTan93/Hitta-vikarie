@@ -34,10 +34,9 @@ function CompanyRegister({ onCompanyRegister }) {
       const data = await response.json()
 
       if (response.ok) {
-        setMessage(data.message)
-        if (data.message === "Företaget har skapats, vänligen logga in med dina inloggningsuppgifter.") {
-          onCompanyRegister() // Update the isLoggedIn state to true
-        }
+        const successMessage = "Företaget skapades! Logga in med dina uppgifter."
+        setMessage(successMessage)
+        onCompanyRegister(successMessage, true, companyname)
       } else {
         setMessage("Företag registreringen misslyckades. Kontrollera dina uppgifter .")
       }

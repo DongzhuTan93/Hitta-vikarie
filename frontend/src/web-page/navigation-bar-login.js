@@ -7,23 +7,26 @@ function AccountLogin({ onCompanyLogin, onSubstituteLogin }) {
 
   const handleCompanyLogin = () => {
     onCompanyLogin(true) // Update the isLoggedIn state to true
-    navigate("/companyProfile-page") // Navigate to the profile page
+    navigate("/companyProfile") // Navigate to the profile page
   };
 
   const handleSubstituteLogin = () => {
     onSubstituteLogin(true)
-    navigate("/substituteProfile-page")
+    navigate("/substituteProfile")
   };
 
   return (
-    <div className="page-container-holder">
-      <div className="page-container">
-        <div className="substitute-container">
-          <div className="alert-container">
-            <div className="login-distence">
-              <SubstituteLogin onSubstituteLogin={handleSubstituteLogin} />
-            </div>
-            <p>-------------------------------</p>
+    <div className="contact-page-container">
+      <div className="contact-card">
+        <div className="contact-info">
+          <h2 className="contact-title">Vikarie-inloggning</h2>
+          <div className="login-distence">
+            <SubstituteLogin onSubstituteLogin={handleSubstituteLogin} />
+          </div>
+        </div>
+        <div className="contact-form-container">
+          <h2 className="contact-title">Företags-inloggning</h2>
+          <div className="login-form-wrapper">
             <CompanyLogin onCompanyLogin={handleCompanyLogin} />
           </div>
         </div>

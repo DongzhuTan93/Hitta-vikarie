@@ -33,7 +33,7 @@ body {
 }
 
 .navbar-content a {
-  color: #333;
+  color: #333 !important; /* Force black text color */
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
@@ -46,7 +46,7 @@ body {
 }
 
 .navbar-content a:hover {
-  color: tomato;
+  color: tomato !important; /* Keep hover color red */
 }
 
 /* Remove the underline effect completely */
@@ -127,6 +127,18 @@ body {
   object-fit: cover;
 }
 
+.overlay {
+  position: absolute;
+  top: 0; /* Changed from -5% to 0 to reduce the distance from top */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
 .wrapper {
   font-size: 6em;
   color: white;
@@ -135,13 +147,56 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 100%; /* Adjust the width as per your preference */
-  margin: 0 1em; /* Center the wrapper horizontally */
+  max-width: 100%;
+  margin: 0 1em;
   box-sizing: border-box;
+  padding-top: 0; /* Remove any top padding */
+  margin-top: -50px; /* Add negative margin to move content up */
+}
+
+.wrapper h2 {
+  font-size: x-large;
+  padding: 5px; /* Reduced from 10px */
+  margin-top: 0;
+  margin-bottom: 5px; /* Reduced space between heading and subheading */
+}
+
+.wrapper h1 {
+  font-size: 3rem;
+  margin-top: 0;
+  margin-bottom: 15px;
 }
 
 .button-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  flex-direction: row;
+  width: 100%;
+  gap: 60px; /* Increased gap between buttons from 30px to 50px */
+}
+
+.button-container a {
+  display: inline-block;
+  padding: 12px 20px;
+  color: white;
+  font-size: medium; /* Restored to original size */
+  border: none;
+  border-radius: 10px;
+  background-color: tomato;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 180px;
+}
+
+.button-container a:hover,
+.button-container a:focus {
+  background-color: #e74c3c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .brick-red.btn-ngs {
@@ -169,30 +224,6 @@ body {
   transform: scale(0.8);
 }
 
-.button-container a {
-  display: inline-block;
-  padding: 8px 16px;
-  color: white;
-  font-size: medium;
-  border: none;
-  border-radius: 10px;
-  margin-right: 100px;
-  margin-top: 30px;
-  background-color: tomato;
-  text-decoration: none;
-  transition: background-color 0.1s, color 0.3s;
-}
-
-.button-container a:last-child {
-  margin-right: 0;
-}
-
-.button-container a:hover,
-.button-container a:focus {
-  background-color: orange; 
-  color: white;
-}
-
 .image-container {
   position: relative;
   height: 100vh;
@@ -218,6 +249,7 @@ body {
   min-height: 80vh; /* Reduced from 100vh */
   padding: 40px 20px; /* Reduced padding */
   box-sizing: border-box;
+  background-color: #FDF6E3;
 }
 
 .page-container {
@@ -300,17 +332,16 @@ button[type="submit"]:hover,
   color: tomato;
   text-decoration: none;
   font-weight: 500;
-  margin-top: 8px;
-  padding: 8px 16px;
-  border: 1px solid tomato;
-  border-radius: 6px;
+  margin-top: 30px;
+  display: inline-block;
   transition: all 0.3s ease;
+  font-size: 16px;
 }
 
 .login-prompt a:hover,
 .login-link:hover {
-  background-color: tomato;
-  color: white;
+  color: #e74c3c;
+  text-decoration: underline;
 }
 
 .box-container {
@@ -357,27 +388,28 @@ h2 {
 .substitute-container {
   max-width: 700px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  margin-top: 30px;
+  background-color: #FDF6E3;
+  border-radius: 10px;
 }
 
 .substitute-box {
-  background-color: #f0f8ff;
-  border: 1px solid #b0d4ff;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 20px;
   text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.substitute-box:hover {
+  border-color: #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .substitute-box p {
@@ -407,27 +439,7 @@ h2 {
   background-color:aliceblue;
 }
 
-.overlay {
-  position: absolute;
-  top: -10%; /* Changed from 0 to move content up */
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 .wrapper p {
-  font-size: x-large;
-}
-
-.wrapper h1 {
-  font-size: 3rem;
-}
-
-.wrapper h2 {
   font-size: x-large;
 }
 
@@ -1364,235 +1376,6 @@ h2 {
   }
 }
 
-/* Fix for horizontal scrolling and hamburger menu positioning */
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden !important;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Fix for hamburger menu positioning - same level as logo */
-.mobile-responsive-navbar {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 10px 15px !important;
-  width: 100% !important;
-}
-
-.mobile-responsive-navbar .container-fluid {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
-  padding: 0 !important;
-}
-
-/* Logo positioning */
-.mobile-responsive-navbar a img {
-  height: 40px !important;
-  margin: 0 !important;
-}
-
-/* Hamburger menu positioning - on same level as logo */
-.mobile-responsive-navbar .navbar-toggler {
-  margin: 0 !important;
-  padding: 4px 8px !important;
-  font-size: 1rem !important;
-  border: 1px solid #ddd !important;
-  position: static !important;
-}
-
-/* Ensure the collapsed menu appears below the header */
-.mobile-responsive-navbar .navbar-collapse {
-  position: absolute !important;
-  top: 60px !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  background-color: white !important;
-  z-index: 1000 !important;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
-}
-
-.App {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden !important;
-  position: relative;
-  box-sizing: border-box;
-}
-
-/* Container fixes for mobile */
-@media (max-width: 768px) {
-  * {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .container-fluid,
-  .container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    overflow-x: hidden !important;
-    box-sizing: border-box;
-    margin: 0 !important;
-  }
-  
-  /* Fix for all page containers */
-  .login-page-container,
-  .contact-page-container,
-  .account-container,
-  .profile-container,
-  .om-oss-container,
-  .video-container,
-  .page-container-holder,
-  .page-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 10px !important;
-    box-sizing: border-box !important;
-    overflow-x: hidden !important;
-    margin: 0 !important;
-  }
-  
-  /* Fix for all cards */
-  .login-card,
-  .contact-card,
-  .account-card,
-  .profile-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 10px !important;
-    box-sizing: border-box !important;
-  }
-  
-  /* Fix for all sections */
-  .login-section,
-  .contact-info,
-  .contact-form-container,
-  .account-form-container,
-  .account-info,
-  .profile-section,
-  .image-section,
-  .text-section {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 10px !important;
-    box-sizing: border-box !important;
-  }
-  
-  /* Fix for all form elements */
-  input, 
-  textarea, 
-  select, 
-  button,
-  .form-control,
-  .login-input,
-  .footer-newsletter-input,
-  .footer-newsletter-button,
-  .submit-button,
-  .login-button {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    font-size: 14px !important;
-  }
-  
-  /* Fix for newsletter form */
-  .footer-newsletter-form {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  
-  /* Fix for text content */
-  p, h1, h2, h3, h4, h5, h6 {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    word-wrap: break-word !important;
-  }
-  
-  /* Fix for images */
-  img, video {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-  
-  /* Fix for navbar */
-  .mobile-responsive-navbar {
-    width: 100% !important;
-    padding: 5px 10px !important;
-  }
-  
-  .navbar-collapse {
-    width: 100% !important;
-  }
-  
-  .navbar-content {
-    width: 100% !important;
-  }
-  
-  .navbar-content a {
-    width: 100% !important;
-    text-align: left !important;
-    padding: 8px 10px !important;
-    margin: 2px 0 !important;
-    font-size: 14px !important;
-  }
-}
-
-/* Extra small devices - additional fixes */
-@media (max-width: 480px) {
-  .contact-page-container,
-  .login-page-container,
-  .account-container,
-  .profile-container,
-  .om-oss-container {
-    padding: 10px;
-  }
-  
-  .contact-card,
-  .login-card,
-  .account-card,
-  .profile-card {
-    padding: 8px;
-  }
-  
-  .contact-info,
-  .contact-form-container,
-  .login-section,
-  .account-form-container,
-  .account-info,
-  .profile-section {
-    padding: 10px;
-  }
-  
-  .form-group {
-    margin-bottom: 8px !important;
-  }
-  
-  .form-control,
-  .login-input {
-    padding: 8px !important;
-    font-size: 13px !important;
-  }
-  
-  .submit-button,
-  .login-button {
-    padding: 8px !important;
-    font-size: 13px !important;
-  }
-}
-
 /* Fix for logo left and hamburger right positioning */
 .mobile-responsive-navbar {
   display: flex !important;
@@ -1831,5 +1614,840 @@ html, body {
     position: static !important; /* Override absolute positioning */
     box-shadow: none !important;
     top: auto !important;
+  }
+}
+
+/* Adjust login forms to match contact form style */
+.login-distence .input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 15px;
+}
+
+.login-distence .input-field::placeholder {
+  color: #ecf0f1;
+  opacity: 0.7;
+}
+
+.login-distence .input-field:focus {
+  border-color: tomato;
+  box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.2);
+  outline: none;
+}
+
+.login-distence h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.login-distence .btn-outline-danger {
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+  letter-spacing: 0.5px;
+}
+
+.login-distence .btn-outline-danger:hover {
+  background-color: #e74c3c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container .input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  margin-bottom: 15px;
+}
+
+.contact-form-container .input-field:focus {
+  border-color: tomato;
+  box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.2);
+  outline: none;
+  background-color: white;
+}
+
+.contact-form-container .btn-outline-danger {
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+  letter-spacing: 0.5px;
+}
+
+.contact-form-container .btn-outline-danger:hover {
+  background-color: #e74c3c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust alert styling */
+.contact-info .alert {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+}
+
+.contact-form-container .alert {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Make both login headings (h1) the same size */
+.contact-form-container h1,
+.login-distence h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.contact-form-container h1 {
+  color: #333;
+}
+
+/* Ensure both sides of the login card have the same padding */
+.contact-form-container,
+.contact-info {
+  padding: 30px;
+}
+
+/* Make the login buttons the same size */
+.contact-form-container .btn-outline-danger,
+.login-distence .btn-outline-danger {
+  width: auto;
+  min-width: 100px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+/* Additional login form styling to ensure consistency */
+.login-form-wrapper h1,
+.login-distence h1 {
+  font-size: 1.2rem !important;
+  margin-bottom: 20px;
+  font-weight: normal;
+  text-align: left;
+}
+
+.login-form-wrapper input,
+.login-distence input {
+  height: 46px;
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.login-form-wrapper button,
+.login-distence button {
+  height: 46px;
+  width: 100%;
+  max-width: none;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-weight: normal;
+}
+
+.contact-title {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.contact-title:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background-color: tomato;
+  bottom: -15px;
+  left: 0;
+}
+
+.contact-form-container h2 {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.contact-form-container h2:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background-color: tomato;
+  bottom: -15px;
+  left: 0;
+}
+
+/* Change background color for ONLY the login card */
+.contact-page-container .contact-info {
+  background-color: #FDF6E3;
+  color: #333;
+}
+
+/* Update other elements in the contact-info section to work with the new background color - ONLY for login page */
+.contact-page-container .contact-info .contact-title {
+  color: #333;
+}
+
+.contact-page-container .login-distence h1 {
+  color: #333;
+}
+
+.contact-page-container .login-distence .input-field {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.contact-page-container .login-distence .input-field::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.contact-page-container .contact-info .alert {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+/* Reset styles for the registration page */
+.page-container-holder {
+  color: inherit;
+}
+
+.page-container {
+  color: inherit;
+}
+
+.page-container h1,
+.page-container label,
+.page-container p {
+  color: inherit;
+}
+
+.page-container .input-field {
+  color: inherit;
+  background-color: #f8f9fa;
+}
+
+.page-container .input-field::placeholder {
+  color: #aaa;
+}
+
+/* Reset styles specifically for the substitute account page */
+.video-container .page-container-holder .page-container {
+  color: black;
+}
+
+.video-container .page-container-holder .page-container h1 {
+  color: #333;
+}
+
+.video-container .page-container-holder .page-container p {
+  color: #666;
+}
+
+.video-container .page-container-holder .page-container .input-field {
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+.video-container .page-container-holder .page-container .input-field::placeholder {
+  color: #aaa;
+}
+
+.video-container .page-container-holder .page-container button {
+  color: white;
+}
+
+/* Fix the alert text color on the registration page */
+.video-container .page-container-holder .alert {
+  color: inherit;
+}
+
+/* Fix login-distence in video container context */
+.video-container .page-container-holder .page-container .login-distence h1 {
+  color: #333;
+}
+
+.video-container .page-container-holder .page-container .login-distence .input-field {
+  color: #333;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+}
+
+.video-container .page-container-holder .page-container .login-distence .input-field::placeholder {
+  color: #aaa;
+}
+
+.video-container .page-container-holder .page-container .login-distence .btn-outline-danger {
+  background-color: tomato;
+  color: white;
+}
+
+/* Fix for login distance vs login-distence naming inconsistency */
+.login-distence,
+.login-distance {
+  width: 100%;
+}
+
+/* Ensure consistent form styling */
+.page-container h1 {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: normal;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Apply consistent styling to both forms */
+.video-container .page-container-holder .page-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 450px; 
+  width: 100%;
+}
+
+.video-container .page-container-holder .page-container .input-field {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  font-size: 14px;
+}
+
+.video-container .page-container-holder .page-container button {
+  width: 100%;
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.video-container .page-container-holder .page-container button:hover {
+  background-color: #e74c3c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-container .page-container-holder .page-container p {
+  color: #666;
+  text-align: center;
+  margin: 15px 0 10px;
+  font-size: 14px;
+}
+
+/* Fix login distance class styling */
+.login-distance .input-field {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #333;
+  font-size: 14px;
+}
+
+.login-distance h1 {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: normal;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.login-distance .btn-outline-danger {
+  width: 100%;
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.alert-container {
+  width: 100%;
+}
+
+/* Style mobile navbar to match the tomato button color */
+@media (max-width: 991px) {
+  /* Ensure navbar toggle button is visible and properly styled */
+  .mobile-responsive-navbar .navbar-toggler {
+    display: block !important;
+    position: relative !important;
+    right: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 5px 8px !important;
+    z-index: 1100 !important;
+    border: 1px solid #ddd !important;
+    background-color: transparent !important;
+  }
+  
+  /* Ensure the collapsed menu is initially hidden */
+  .navbar-collapse:not(.show) {
+    display: none !important;
+  }
+  
+  /* Style the full-screen menu when expanded */
+  .navbar-collapse.show, 
+  .navbar-collapse.collapsing {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background-color: tomato !important;
+    z-index: 9999 !important;
+    padding: 80px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    transition: all 0.3s ease-in-out !important;
+  }
+  
+  /* Style the menu content */
+  .mobile-responsive-navbar .navbar-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 30px !important;
+    width: 100% !important;
+  }
+
+  .mobile-responsive-navbar .navbar-content a {
+    color: white !important;
+    font-size: 24px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    padding: 10px !important;
+    text-align: center !important;
+    width: 100% !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .mobile-responsive-navbar .navbar-content a:hover,
+  .mobile-responsive-navbar .navbar-content a.active-link {
+    color: #fff !important;
+    text-decoration: underline !important;
+  }
+  
+  /* Style the close button */
+  .mobile-menu-close-btn {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 40px !important;
+    font-weight: 300 !important;
+    cursor: pointer !important;
+    z-index: 10001 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* Style for mobile navigation links - Update to only apply white color in mobile view */
+.mobile-nav-link {
+  display: block !important;
+  font-size: 16px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 15px !important;
+  text-align: center !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+  margin-bottom: 5px !important;
+  text-decoration: none !important;
+  color: #333 !important; /* Default color for desktop */
+}
+
+/* Apply white color only in mobile collapsed menu */
+@media (max-width: 991px) {
+  .navbar-collapse.show .mobile-nav-link,
+  .navbar-collapse.collapsing .mobile-nav-link {
+    color: white !important;
+    font-size: 24px !important;
+    padding: 10px !important;
+  }
+}
+
+.mobile-nav-link:hover {
+  text-decoration: underline !important;
+}
+
+/* Style for mobile menu close button */
+.mobile-menu-close-btn {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  background: none !important;
+  border: none !important;
+  color: white !important;
+  font-size: 40px !important;
+  font-weight: 300 !important;
+  cursor: pointer !important;
+  z-index: 10001 !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mobile-menu-close-btn:hover {
+  transform: scale(1.1) !important;
+}
+
+@media (max-width: 991px) {
+  .mobile-responsive-navbar .navbar-toggler[aria-expanded="true"] {
+    display: none !important; /* Hide hamburger when menu is open */
+  }
+}
+
+/* Final mobile menu fixes */
+@media (max-width: 991px) {
+  #responsive-navbar-nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background-color: tomato !important;
+    z-index: 9999 !important;
+    padding-top: 80px !important;
+  }
+  
+  .mobile-responsive-navbar .navbar-content.ms-auto {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+}
+
+/* Fix for mobile menu to ensure it starts collapsed */
+@media (max-width: 991px) {
+  .navbar-collapse:not(.show) {
+    display: none !important;
+  }
+  
+  /* Make sure the body is not affected by menu state */
+  body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* Ensure the contact title has the correct color in the white section */
+.contact-form-container .contact-title {
+  color: #2c3e50 !important;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.contact-form-container .contact-title:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background-color: tomato;
+  bottom: -15px;
+  left: 0;
+}
+
+/* Profile Page Styling */
+.profile-container {
+  max-width: 90%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profile-card {
+  background-color: #FDF6E3;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 20px;
+  padding: 0;
+  width: 100%;
+}
+
+.profile-header {
+  display: flex;
+  padding: 30px;
+  background-color: #FDF6E3;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 30px;
+  border: 3px solid white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.profile-title {
+  color: #666;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.profile-actions {
+  padding: 25px 30px;
+  display: flex;
+  gap: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #FDF6E3;
+}
+
+.profile-button {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.primary-button {
+  background-color: tomato;
+  color: white;
+}
+
+.primary-button:hover {
+  background-color: #e74c3c;
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.secondary-button:hover {
+  background-color: #e9ecef;
+}
+
+.profile-content {
+  padding: 25px 30px;
+  background-color: #FDF6E3;
+}
+
+.profile-content h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-detail-item {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #e8e0d0;
+}
+
+.detail-label {
+  width: 35%;
+  color: #666;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.detail-value {
+  width: 65%;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Job opportunities message styling */
+.job-opportunities-message {
+  margin: 30px 0;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  border-top: 1px solid #e8e0d0;
+  border-bottom: 1px solid #e8e0d0;
+  background-color: #FDF6E3;
+}
+
+/* Logout link styling */
+.logout-link {
+  color: #dc3545 !important; 
+  font-weight: 500;
+}
+
+.logout-link:hover {
+  color: #bd2130 !important;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments for profile page */
+@media (max-width: 768px) {
+  .profile-container {
+    max-width: 95%;
+  }
+  
+  .profile-header {
+    padding: 20px;
+  }
+  
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+    margin-right: 20px;
+  }
+  
+  .profile-info h2 {
+    font-size: 22px;
+  }
+  
+  .profile-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-avatar {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  .profile-actions {
+    flex-direction: column;
+  }
+  
+  .profile-button {
+    width: 100%;
+  }
+  
+  .profile-detail-item {
+    flex-direction: column;
+  }
+  
+  .detail-label, 
+  .detail-value {
+    width: 100%;
+  }
+  
+  .detail-value {
+    margin-top: 5px;
+  }
+}
+
+/* Only apply white text color when mobile menu is expanded */
+@media (max-width: 991px) {
+  .navbar-collapse.show .navbar-content a,
+  .navbar-collapse.collapsing .navbar-content a {
+    color: white !important;
+  }
+}
+
+/* Mobile styles for button container */
+@media (max-width: 767px) {
+  .overlay {
+    top: 0; /* Reset top for mobile */
+  }
+  
+  .button-container {
+    flex-direction: column;
+    gap: 30px; /* Increased gap between buttons on mobile from 20px to 30px */
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .button-container a {
+    width: 80%;
+    max-width: 280px;
+    margin: 0;
+    padding: 12px 20px;
+    font-size: medium; /* Keep original font size */
+  }
+  
+  .wrapper {
+    width: 100%;
+    padding: 0 15px;
+    margin-top: -70px; /* Increased negative margin to move content up more on mobile */
   }
 }
