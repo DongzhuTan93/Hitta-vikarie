@@ -21,7 +21,6 @@ function App() {
   const handleSubstituteLogin = () => {
     console.log('handleSubstituteLogin')
     setIsLoggedIn(true)
-
   }
 
   const handleSubstituteLogout = () => {
@@ -39,15 +38,15 @@ function App() {
     setCompanyLoggedIn(false)
   }
 
-
   return (
     <Router>
       <NavigationBar 
-        isLoggedIn={ isLoggedIn } 
-        isCompanyLoggedIn={ isCompanyLoggedIn } 
+        isLoggedIn={isLoggedIn} 
+        isCompanyLoggedIn={isCompanyLoggedIn} 
       />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/om-mig" element={<AboutUs />} />
         <Route path="/om-oss" element={<AboutUs />} />
         <Route path="/showAllSubstitute" element={<ShowAllSubstitute  onLogout={handleSubstituteLogout} onCompanyLogout={handleCompanyLogout}/>} />
         <Route path="/showCompanies" element={<ShowCompanies onCompanyLogout={handleCompanyLogout} onLogout={handleSubstituteLogout}/>} />
@@ -60,7 +59,6 @@ function App() {
       </Routes>
     </Router>
   )
-
 }
 
 export default App

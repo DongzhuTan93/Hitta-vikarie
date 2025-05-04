@@ -14,7 +14,7 @@ function OmOss() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default OmOss

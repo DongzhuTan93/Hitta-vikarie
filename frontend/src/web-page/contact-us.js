@@ -7,7 +7,7 @@ function KontaktaOss() {
     <div className='contact-page-container'>
       <div className="contact-card">
         <div className="contact-info">
-          <h2 className="contact-title">Kontakta oss</h2>
+          <h1 className="contact-title">Kontakta oss</h1>
           <div className="contact-detail">
             <i className="contact-icon location-icon"></i>
             <p>Funkabo, 39350, Kalmar, Sverige</p>
@@ -25,31 +25,23 @@ function KontaktaOss() {
             <p>tandongzhu@gmail.com</p>
           </div>
           
-          {/* Footer section with smaller text and better spacing */}
+          {/* Footer section with much larger social icons */}
           <div className="footer-section">
             <h3 className="footer-title">Följ oss</h3>
             <div className="footer-social">
-              <a href="https://github.com/DongzhuTan93/" target="_blank" rel="noopener noreferrer" className="footer-social-link">
-                <img src={githubIcon} alt="GitHub" className="footer-social-icon" />
+              <a href="https://github.com/DongzhuTan93/" target="_blank" rel="noopener noreferrer" className="footer-social-link large-icon">
+                <img src={githubIcon} alt="GitHub" className="footer-social-icon large-icon" />
               </a>
-              <a href="https://www.linkedin.com/in/dongzhu-tan-891b13241/" target="_blank" rel="noopener noreferrer" className="footer-social-link">
-                <img src={linkedinIcon} alt="LinkedIn" className="footer-social-icon" />
+              <a href="https://www.linkedin.com/in/dongzhu-tan-891b13241/" target="_blank" rel="noopener noreferrer" className="footer-social-link large-icon">
+                <img src={linkedinIcon} alt="LinkedIn" className="footer-social-icon large-icon" />
               </a>
-            </div>
-          </div>
-          
-          <div className="footer-newsletter">
-            <h3 className="footer-title">GÅ MED I VÅRT NYHETSBREV</h3>
-            <div className="footer-newsletter-form">
-              <input type="email" placeholder="Din e-postadress" className="footer-newsletter-input" />
-              <button className="footer-newsletter-button">Prenumerera</button>
             </div>
           </div>
           
           <p className="footer-copyright">© 2024 Sekretesspolicy</p>
         </div>
         <div className="contact-form-container">
-          <h2>Skicka ett meddelande</h2>
+          <h1>Skicka ett meddelande</h1>
           <form className="contact-form">
             <div className="form-group">
               <input type="text" placeholder="Ditt namn" className="form-control" required />
