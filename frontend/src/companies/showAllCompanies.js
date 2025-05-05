@@ -35,15 +35,15 @@ function ShowCompanies({ onCompanyLogout, onLogout }) {
             <p>Alla företag:</p> 
             {companies.map((company, index) => (
                 <div key={index} className="substitute-box">
-                  <h2>
+                  <p>
                     <span className="highlight">Företag name:</span> {company.companyname}
-                  </h2>
-                  <h2>
+                  </p>
+                  <p>
                     <span className="highlight">Företag behov:</span> {company.availablePositions}
-                  </h2>
-                  <h2>
+                  </p>
+                  <p>
                     <span className="highlight">Kontakt företag:</span> {company.companyEmail}
-                  </h2>
+                  </p>
                 </div>
               ))}
           </>

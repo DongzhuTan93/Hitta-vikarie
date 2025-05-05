@@ -284,7 +284,6 @@ body {
   min-height: 80vh; /* Reduced from 100vh */
   padding: 40px 20px; /* Reduced padding */
   box-sizing: border-box;
-  background-color: #FDF6E3;
 }
 
 .page-container {
@@ -450,6 +449,16 @@ h2 {
 
 .substitute-box p {
   color: black;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.substitute-box p .highlight {
+  font-weight: 600;
+  padding: 2px 5px;
+  margin-right: 5px;
 }
 
 .substitute-box:hover {
@@ -704,16 +713,15 @@ h2 {
   display: flex;
   flex-direction: row;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto 0;
   padding: 40px;
-  background-color: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .image-section {
-  width: 40%;
+  width: 45%; /* Adjusted to match the main declaration */
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -722,8 +730,8 @@ h2 {
 }
 
 .about-image {
-  width: 80%; /* Reduced from 110% */
-  max-width: 400px; /* Added max-width */
+  width: 100%;
+  max-width: 500px;
   height: auto;
   object-fit: cover;
   border-radius: 10px;
@@ -736,12 +744,12 @@ h2 {
 }
 
 .text-section {
-  width: 60%;
+  width: 55%; /* Adjusted to match the main declaration */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 40px;
 }
 
 .text-content {
@@ -788,11 +796,11 @@ h2 {
   }
 
   .image-section {
-    width: 40%; /* Reduced from 60% */
+    width: 45%; /* Adjusted to match the main declaration */
   }
 
   .text-section {
-    width: 60%; /* Increased from 40% */
+    width: 55%; /* Adjusted to match the main declaration */
     padding: 40px;
   }
 
@@ -1188,6 +1196,7 @@ h2 {
   .about-image {
     max-width: 100%;
     height: auto;
+    width: 100%; /* Added width property to ensure full width */
   }
   
   .text-content p {

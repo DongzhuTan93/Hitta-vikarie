@@ -3,7 +3,7 @@ import developer from '../public/developer.jpg'
 
 function OmOss() {
   return (
-    <div className="om-oss-container" style={{ backgroundColor: '#FDF6E3' }}>
+    <div className="om-oss-container">
       <div className="image-section">
         <img src={developer} alt="Developer" className="about-image" />
       </div>

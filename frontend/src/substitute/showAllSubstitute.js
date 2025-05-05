@@ -36,18 +36,18 @@ function ShowSubstitute({ onLogout, onCompanyLogout }) {
           <p>Alla tillgängliga vikarie:</p> 
           {substitutes.map((substitute, index) => (
             <div key={index} className="substitute-box">
-              <h2>
+              <p>
                 <span className="highlight">Vikaries name:</span> {substitute.substitutename}
-              </h2>
-              <h2>
+              </p>
+              <p>
                 <span className="highlight">Vikaries yrke:</span> {substitute.occupation}
-              </h2>
-              <h2>
+              </p>
+              <p>
                 <span className="highlight">Vikaries tillgänglig tid:</span> {substitute.freetime}
-              </h2>
-              <h2>
+              </p>
+              <p>
                 <span className="highlight">Kontakt mig:</span> {substitute.substituteEmail}
-              </h2>
+              </p>
             </div>
           ))}
         </>
