@@ -2,6 +2,25 @@ body {
   font-family:  Georgia, 'Times New Roman', Times, serif; 
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  height: 100% !important;
+  min-height: 100% !important;
+  position: relative !important;
+  overscroll-behavior-y: none;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+html {
+  height: 100% !important;
+  margin: 0;
+  padding: 0;
+}
+
+#root, .App {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .App {
@@ -148,6 +167,8 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .video-container video {
@@ -1442,13 +1463,15 @@ h2 {
 .mobile-responsive-navbar .container-fluid {
   display: flex !important;
   justify-content: space-between !important;
+  align-items: center !important;
   width: 100% !important;
   padding: 0 !important;
+  flex-direction: row !important;
 }
 
 /* Logo positioning */
 .mobile-responsive-navbar a img {
-  height: 40px !important;
+  height: 70px !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -1463,6 +1486,27 @@ h2 {
   font-size: 1rem !important;
   z-index: 1100 !important;
   border: 1px solid #ddd !important;
+  display: block !important;
+}
+
+/* Mobile navbar specific layout for smaller screens */
+@media (max-width: 767px) {
+  .mobile-responsive-navbar .container-fluid {
+    flex-wrap: nowrap !important;
+  }
+  
+  .mobile-responsive-navbar .navbar-brand {
+    flex: 0 0 auto !important;
+  }
+  
+  .mobile-responsive-navbar .navbar-toggler {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+  }
+  
+  .mobile-responsive-navbar a img {
+    height: 50px !important;
+  }
 }
 
 /* Ensure the collapsed menu appears below the header */
@@ -1511,7 +1555,7 @@ h2 {
   object-fit: contain !important;
 }
 
-/* Hamburger button styling - exactly like Bossa Care */
+/* Hamburger button styling */
 .mobile-responsive-navbar .custom-toggler {
   background: transparent !important;
   border: none !important;
@@ -1520,27 +1564,40 @@ h2 {
   box-shadow: none !important;
 }
 
-.mobile-responsive-navbar .navbar-toggler-icon {
-  width: 1.5em !important;
-  height: 1.5em !important;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-}
-
-.mobile-responsive-navbar .navbar-toggler:focus {
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-/* Dropdown menu styling */
-.mobile-responsive-navbar .navbar-collapse {
-  position: absolute !important;
-  top: 75px !important;
-  left: 0 !important;
-  right: 0 !important;
-  background-color: white !important;
-  z-index: 1000 !important;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
-  padding: 0 !important;
+/* Style mobile navbar to match the tomato button color */
+@media (max-width: 991px) {
+  /* Ensure navbar toggle button is visible and properly styled */
+  .mobile-responsive-navbar .navbar-toggler {
+    display: block !important;
+    position: relative !important;
+    right: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 5px 8px !important;
+    z-index: 1100 !important;
+    border: 1px solid #ddd !important;
+    background-color: transparent !important;
+  }
+  
+  /* Fix for hamburger menu button visibility */
+  .navbar-toggler[aria-expanded="false"] {
+    display: block !important;
+  }
+  
+  /* Override Bootstrap default that might hide the toggler */
+  .navbar-toggler-icon {
+    display: inline-block !important;
+  }
+  
+  .mobile-responsive-navbar .navbar-brand, 
+  .mobile-responsive-navbar .navbar-toggler {
+    z-index: 1200 !important; /* Ensure these are above the collapsing menu */
+  }
+  
+  /* Keep the logo and hamburger visible when menu is expanded */
+  .mobile-responsive-navbar .navbar-toggler[aria-expanded="true"] {
+    display: none !important; /* Hide only when menu is open and close button appears */
+  }
 }
 
 /* Home page content styling - responsive approach */
@@ -1666,6 +1723,11 @@ h2 {
     position: static !important; /* Override absolute positioning */
     box-shadow: none !important;
     top: auto !important;
+  }
+  
+  /* Hide the hamburger menu in desktop view */
+  .mobile-responsive-navbar .navbar-toggler {
+    display: none !important;
   }
 }
 
@@ -2095,6 +2157,7 @@ h2 {
     flex-direction: column !important;
     justify-content: flex-start !important;
     transition: all 0.3s ease-in-out !important;
+    overflow-y: auto !important; /* Enable vertical scrolling */
   }
   
   /* Style the menu content */
@@ -2213,6 +2276,7 @@ h2 {
     background-color: tomato !important;
     z-index: 9999 !important;
     padding-top: 80px !important;
+    overflow-y: auto !important; /* Enable vertical scrolling */
   }
   
   .mobile-responsive-navbar .navbar-content.ms-auto {
@@ -2220,16 +2284,16 @@ h2 {
     flex-direction: column !important;
     align-items: center !important;
     width: 100% !important;
-  }
-}
-
-/* Fix for mobile menu to ensure it starts collapsed */
-@media (max-width: 991px) {
-  .navbar-collapse:not(.show) {
-    display: none !important;
+    overflow-y: auto !important; /* Enable scrolling for menu content */
+    max-height: calc(100vh - 100px) !important; /* Allow room for padding */
+    padding-bottom: 40px !important; /* Add some bottom padding */
   }
   
-  /* Make sure the body is not affected by menu state */
+  /* Make sure body isn't frozen when menu is open */
+  body.menu-open {
+    overflow: hidden !important;
+  }
+  
   body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
@@ -2501,5 +2565,464 @@ h2 {
     width: 100%;
     padding: 0 15px;
     margin-top: -70px; /* Increased negative margin to move content up more on mobile */
+  }
+  
+  /* Make text smaller on mobile */
+  .wrapper h1 {
+    font-size: 1.8rem !important; /* Smaller main heading on mobile */
+  }
+  
+  .wrapper h2 {
+    font-size: 1.1rem !important; /* Smaller sub-heading on mobile */
+  }
+  
+  /* Make button text smaller on mobile */
+  .button-container a {
+    font-size: 1rem !important; /* Smaller button text on mobile */
+  }
+}
+
+/* Extra fix for mobile menu - most important overrides */
+@media (max-width: 767px) {
+  .mobile-responsive-navbar {
+    padding: 8px 15px !important;
+  }
+  
+  /* Ensure logo and toggle are visible and correctly sized */
+  .mobile-responsive-navbar .logo-image {
+    height: 50px !important;
+    width: auto !important;
+  }
+  
+  /* Force the toggle button to be visible */
+  .mobile-responsive-navbar .navbar-toggler {
+    display: block !important;
+    position: relative !important;
+    margin-right: 0 !important;
+    padding: 8px !important;
+    z-index: 2000 !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 4px !important;
+  }
+  
+  .mobile-responsive-navbar .navbar-toggler-icon {
+    display: inline-block !important;
+    width: 1.5em !important;
+    height: 1.5em !important;
+    background-size: 100% !important;
+  }
+  
+  /* Ensure proper row layout */
+  .mobile-responsive-navbar .container-fluid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  /* Fix margin issues that might cause alignment problems */
+  .mobile-responsive-navbar .navbar-brand,
+  .mobile-responsive-navbar .navbar-toggler {
+    margin: 0 !important;
+  }
+}
+
+/* Add scrolling capability to mobile menu */
+@media (max-width: 991px) {
+  .navbar-collapse.show, 
+  .navbar-collapse.collapsing {
+    overflow-y: auto !important; /* Enable vertical scrolling */
+  }
+  
+  #responsive-navbar-nav {
+    overflow-y: auto !important; /* Enable vertical scrolling */
+  }
+  
+  .mobile-responsive-navbar .navbar-content.ms-auto {
+    overflow-y: auto !important; /* Enable scrolling for menu content */
+    max-height: calc(100vh - 100px) !important; /* Allow room for padding */
+    padding-bottom: 40px !important; /* Add some bottom padding */
+  }
+}
+
+/* Extra fix for mobile menu - most important overrides */
+@media (max-width: 767px) {
+  /* Add overflow fixes for mobile menu scrolling */
+  .navbar-collapse.show,
+  .navbar-collapse.collapsing {
+    overflow-y: auto !important;
+  }
+  
+  #responsive-navbar-nav.show {
+    overflow-y: auto !important;
+  }
+  
+  .mobile-responsive-navbar .navbar-content {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important; /* Smooth scrolling on iOS */
+  }
+}
+
+/* Global scrolling fix for mobile devices */
+html, body {
+  overflow-x: hidden;
+  height: auto !important;
+  position: relative !important;
+  overscroll-behavior-y: none;
+}
+
+body {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Ensure all content is scrollable on mobile */
+@media (max-width: 991px) {
+  .App, #root, main, .container, .container-fluid {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .mobile-responsive-navbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1030 !important;
+  }
+  
+  /* Fix for content areas */
+  .om-oss-container,
+  .profile-container,
+  .substitute-container,
+  .contact-page-container,
+  .page-container-holder,
+  .login-page-container,
+  .video-container {
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* Only apply fixed positioning to the expanded menu */
+  .navbar-collapse:not(.show) {
+    position: absolute !important;
+  }
+  
+  .navbar-collapse.show {
+    position: fixed !important;
+    overflow-y: auto !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+  }
+}
+
+/* Fix for iOS Safari scrolling issues */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* iOS specific fix */
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* Fix for iOS height issues */
+  .video-container, 
+  .page-container-holder {
+    height: auto !important;
+    min-height: 80vh !important; /* Use min-height instead of fixed height */
+  }
+}
+
+/* iOS-specific fixes for content scrolling */
+@media (max-width: 991px) {
+  /* Fix for possible height calculation issues */
+  .overlay,
+  .video-container,
+  .substitute-container,
+  .profile-container,
+  .om-oss-container {
+    position: relative !important;
+    height: auto !important;
+    min-height: 85vh !important;
+    overflow-y: auto !important;
+  }
+  
+  /* Reset any potentially problematic fixed positioning */
+  .page-container-holder,
+  .contact-page-container {
+    position: relative !important;
+    height: auto !important;
+    min-height: 80vh !important;
+    max-height: none !important;
+  }
+  
+  /* Ensure content is not cut off */
+  .wrapper,
+  .home-content,
+  .feature-section {
+    position: relative !important;
+    overflow: visible !important;
+  }
+  
+  /* Fix for fixed element stacking on iOS */
+  .mobile-responsive-navbar {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Fix specific issue with video container height */
+.video-container {
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  overflow-y: auto !important;
+}
+
+/* Scrolling fix specifically targeting iOS Safari */
+@supports (-webkit-overflow-scrolling: touch) {
+  body {
+    position: relative !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    height: auto !important;
+  }
+  
+  /* Force content areas to be scrollable */
+  main, 
+  .container, 
+  .container-fluid,
+  .video-container,
+  .page-container-holder,
+  .contact-page-container,
+  .om-oss-container,
+  .profile-container,
+  .substitute-container {
+    position: relative !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    height: auto !important;
+  }
+  
+  /* Prevent content from being cut off at the bottom */
+  .page-container-holder,
+  .contact-page-container {
+    padding-bottom: 50px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+/* Desktop Version - Ensure Normal Behavior */
+@media (min-width: 768px) {
+  html, body {
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+  }
+  
+  .App, #root {
+    height: auto !important;
+    overflow: visible !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .video-container {
+    position: relative !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .video-container video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: -1 !important;
+  }
+  
+  .overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 1 !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .wrapper {
+    text-align: center !important;
+    color: white !important;
+    padding: 40px !important;
+    z-index: 2 !important;
+    position: relative !important;
+  }
+  
+  .button-container {
+    margin-top: 40px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 30px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .mobile-responsive-navbar {
+    position: relative !important;
+    background: white !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  }
+}
+
+/* Mobile Header - White Background */
+@media (max-width: 991px) {
+  .navbar, .mobile-responsive-navbar {
+    background-color: white !important;
+    background: white !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  }
+}
+
+/* Full Screen Video for Mobile - Clean Solution */
+@media (max-width: 767px) {
+  /* Clean body setup */
+  html, body {
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+  
+  /* Full screen video container */
+  .video-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+    z-index: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Video covers entire screen */
+  .video-container video {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    transform: translate(-50%, -50%) !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+  }
+  
+  /* Overlay for content */
+  .overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 1 !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Content wrapper */
+  .wrapper {
+    text-align: center !important;
+    color: white !important;
+    padding: 20px !important;
+    z-index: 2 !important;
+    position: relative !important;
+  }
+  
+  /* Button container */
+  .button-container {
+    margin-top: 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    align-items: center !important;
+  }
+  
+  /* Header stays on top */
+  .mobile-responsive-navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: white !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  }
+  
+  /* Hide any elements that might create scrolling */
+  .App, #root {
+    height: 100vh !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* Fix for iOS Safari to remove bottom space */
+@supports (-webkit-touch-callout: none) {
+  .video-container {
+    height: -webkit-fill-available !important;
+    min-height: -webkit-fill-available !important;
+    max-height: -webkit-fill-available !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .overlay {
+    height: -webkit-fill-available !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  html {
+    height: -webkit-fill-available;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }

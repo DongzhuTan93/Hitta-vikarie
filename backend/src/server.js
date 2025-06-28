@@ -26,11 +26,43 @@ try {
   const app = express()
 
   // Allow requests from frontend with credentials
+  // Support multiple origins for development and production
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000'
+
+  // Allow requests from frontend with credentials
   const corsOptions = {
-    origin: process.env.FRONTEND_URL,
+    /**
+     * Determines if the request origin is allowed by CORS policy.
+     *
+     * @param {string|undefined} origin - The origin of the request, undefined for same-origin requests
+     * @param {Function} callback - Callback function to call with CORS decision
+     * @returns {void} Calls callback with error or permission decision
+     */
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps, curl, etc.)
+      if (!origin) return callback(null, true)
+
+      // List of allowed origins
+      const allowedOrigins = [
+        frontendUrl, // Environment variable
+        'http://frontend', // Docker internal network
+        'http://localhost:3000', // Local development
+        'http://cscloud7-218.lnu.se' // Production domain
+      ]
+
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true)
+      } else {
+        console.log('CORS blocked:', origin)
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
     credentials: true
   }
 
+  console.log('CORS origin:', process.env.FRONTEND_URL)
+
+  // Apply CORS middleware with configured options
   app.use(cors(corsOptions))
 
   // Set various HTTP headers to make the application little more secure (https://www.npmjs.com/package/helmet).
@@ -131,5 +163,3 @@ try {
   console.error(err)
   process.exitCode = 1
 }
-
-console.log("CORS origin:", process.env.FRONTEND_URL);

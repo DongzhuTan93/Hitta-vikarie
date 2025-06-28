@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import userDefaultIcon from '../public/user-default-icon.js' // Importera standardbild
 
 function CompanyProfilePage({ onCompanyLogout }) {
-  const navigate = useNavigate()
   const [companyname, setCompanyname] = useState("Företag") // Standard företagsnamn
   
   // Försök hämta företagsnamnet från localStorage

@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Link } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert'
 
 
@@ -6,6 +7,7 @@ function CompanyRegister({ onCompanyRegister }) {
   const [companyname, setSubstitutename] = useState("")
   const [companyEmail, setSubstituteEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [gdprConsent, setGdprConsent] = useState(false)
   const [message, setMessage] = useState("")
   const [requestStatus, setRequestStatus] = useState(null)
 
@@ -14,6 +16,12 @@ function CompanyRegister({ onCompanyRegister }) {
 
     if (!companyname || !companyEmail || !password) {
       setMessage("Användarnamn, användarens e-postadress och lösenord krävs!")
+      return
+    }
+
+    if (!gdprConsent) {
+      setMessage("Du måste acceptera vår integritetspolicy för att fortsätta.")
+      setRequestStatus(false)
       return
     }
 
@@ -52,7 +60,7 @@ function CompanyRegister({ onCompanyRegister }) {
   return (
     <div>
       {message && <Alert variant={requestStatus ? "success" : "danger"}>{message}</Alert>}
-      <h1>Registrera dig för att hitta alla vikarie:</h1>
+      <p>Registrera dig för att hitta alla vikarie:</p>
       <form onSubmit={handleCompanyRegisterClick}>
         <div>
           <input 
@@ -79,6 +87,25 @@ function CompanyRegister({ onCompanyRegister }) {
             onChange={(event) => {setPassword(event.target.value)}}
           />
         </div>
+        
+        {/* GDPR Consent */}
+        <div className="form-check mt-3 mb-3" style={{ fontSize: '0.9rem' }}>
+          <input 
+            className="form-check-input" 
+            type="checkbox" 
+            id="gdprConsentCompany"
+            checked={gdprConsent}
+            onChange={(event) => setGdprConsent(event.target.checked)}
+          />
+          <label className="form-check-label" htmlFor="gdprConsentCompany">
+            Jag accepterar att företagets uppgifter behandlas enligt{' '}
+            <Link to="/integritetspolicy" target="_blank" className="text-decoration-underline">
+              integritetspolicyn
+            </Link>{' '}
+            och samtycker till datainsamling för att tillhandahålla tjänsten.
+          </label>
+        </div>
+        
         <button type="submit" style={{ marginTop: '20px' }} className="btn btn-outline-danger">Registrera</button>
       </form>
     </div>

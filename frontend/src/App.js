@@ -3,6 +3,7 @@ import Home from './web-page/home-page'
 import './public/App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AboutUs from './web-page/about-us'
+import PrivacyPolicy from './web-page/privacy-policy'
 import SubstituteAccountHandle from './substitute/substituteAccount'
 import SubstituteProfilePage from './substitute/substituteProfile'
 import NavigationBar from './web-page/navigation-bar'
@@ -48,6 +49,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/om-mig" element={<AboutUs />} />
         <Route path="/om-oss" element={<AboutUs />} />
+        <Route path="/integritetspolicy" element={<PrivacyPolicy />} />
         <Route path="/showAllSubstitute" element={<ShowAllSubstitute  onLogout={handleSubstituteLogout} onCompanyLogout={handleCompanyLogout}/>} />
         <Route path="/showCompanies" element={<ShowCompanies onCompanyLogout={handleCompanyLogout} onLogout={handleSubstituteLogout}/>} />
         <Route path="/substituteAccount" element={<SubstituteAccountHandle onSubstituteLogin={ handleSubstituteLogin } onSubstituteRegister={ handleSubstituteLogin }/>} />

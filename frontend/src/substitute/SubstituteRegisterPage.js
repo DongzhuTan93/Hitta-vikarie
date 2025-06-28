@@ -1,6 +1,6 @@
 import React from 'react';
 import SubstituteRegister from './substitute-register';
-import registerVideo from '../public/vikarie-register-video.mp4';
+import registerVideo from '../public/homepage-video.mp4';
 
 function SubstituteRegisterPage({ onSubstituteRegister }) {
   return (

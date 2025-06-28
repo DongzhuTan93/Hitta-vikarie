@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SubstituteLogin from './substitute-login';
-import registerVideo from '../public/vikarie-register-video.mp4';
+import registerVideo from '../public/homepage-video.mp4';
 import Alert from 'react-bootstrap/Alert';
 
 function SubstituteLoginPage({ onSubstituteLogin }) {

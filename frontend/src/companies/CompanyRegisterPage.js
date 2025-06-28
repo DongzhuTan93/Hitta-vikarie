@@ -1,13 +1,11 @@
 import React from 'react';
 import CompanyRegister from './company-register';
-import companyVideo from '../public/company-register-video.mp4';
+import companyImage from '../public/company-register.jpg';
 
 function CompanyRegisterPage({ onCompanyRegister }) {
   return (
     <div className="video-container">
-      <video autoPlay loop muted>
-        <source src={companyVideo} type="video/mp4" />
-      </video>
+      <img src={companyImage} alt="Company register background" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       <div className='page-container-holder'>
         <div className="page-container">
           <div className="substitute-container">
