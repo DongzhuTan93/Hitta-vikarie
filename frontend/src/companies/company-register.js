@@ -53,7 +53,7 @@ function CompanyRegister({ onCompanyRegister }) {
       setRequestStatus(response.ok)
     } catch (error) {
       console.log(error)
-      setMessage("Ett fel uppstod")
+      setMessage("Databasen är inte tillgänglig på produktionsservern. Kontakta utvecklaren för en lokal demonstration av applikationen.")
     }
   }
 

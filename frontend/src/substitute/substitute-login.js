@@ -80,7 +80,7 @@ function SubstituteLogin({ onSubstituteLogin, onEnterKey, prefillUsername = "", 
       setRequestStatus(response.ok)
     } catch (error) {
       console.log("Login error:", error)
-      setMessage("Ett fel uppstod vid inloggning. Försök igen.")
+      setMessage("Databasen är inte tillgänglig på produktionsservern. Kontakta utvecklaren för en lokal demonstration av applikationen.")
     }
   }
 
